@@ -1,0 +1,51 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout
+  title="404 — Markel Álvarez"
+  description="Page not found."
+>
+  <section class="min-h-[70vh] flex items-center justify-center px-6 md:px-12 py-24 text-center">
+    <div class="max-w-xl flex flex-col items-center gap-6">
+      <p class="text-display leading-none">404</p>
+
+      <h1 class="text-headline" data-i18n="title">Page not found</h1>
+
+      <p class="text-muted" data-i18n="body">
+        The page you're looking for doesn't exist or has moved.
+      </p>
+
+      <a
+        href="/"
+        id="home-link"
+        class="nb-border nb-shadow nb-press bg-[var(--color-ink)] text-[var(--color-paper)] text-label px-6 py-3 inline-block"
+        data-i18n="cta"
+      >
+        Back to home
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const isEs = window.location.pathname.startsWith('/es');
+
+  const copy = {
+    title: isEs ? 'Página no encontrada' : 'Page not found',
+    body: isEs
+      ? 'La página que buscas no existe o se ha movido.'
+      : "The page you're looking for doesn't exist or has moved.",
+    cta: isEs ? 'Volver al inicio' : 'Back to home',
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+    const key = el.dataset.i18n as keyof typeof copy;
+    if (copy[key]) el.textContent = copy[key];
+  });
+
+  if (isEs) {
+    document.documentElement.lang = 'es';
+    document.getElementById('home-link')?.setAttribute('href', '/es');
+  }
+</script>
