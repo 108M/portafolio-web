@@ -1,0 +1,44 @@
+---
+import SectionTitle from '@/components/ui/SectionTitle.astro';
+import ProjectCard from '@/components/ui/ProjectCard.astro';
+import Button from '@/components/ui/Button.astro';
+import { projects } from '@/data/projects';
+import { useTranslations } from '@/i18n/ui';
+import type { Lang } from '@/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Featured first, then the rest.
+const sorted = [...projects].sort((a, b) => Number(b.featured) - Number(a.featured));
+---
+
+<section
+  id="projects"
+  class="nb-border border-t-0 border-x-0 border-b-2 py-24 md:py-32 px-6 md:px-12 nb-texture"
+>
+  <SectionTitle title={t('projects.title')} index="04" />
+
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    {sorted.map((project, i) => (
+      <ProjectCard
+        project={project}
+        lang={lang}
+        index={i}
+        viewLabel={t('projects.view')}
+        codeLabel={t('projects.code')}
+        featuredLabel={t('projects.featured')}
+      />
+    ))}
+  </div>
+
+  <div class="reveal mt-12 flex justify-center">
+    <Button href="https://github.com/108M?tab=repositories" variant="outline" size="lg" external>
+      {t('projects.all')} ↗
+    </Button>
+  </div>
+</section>

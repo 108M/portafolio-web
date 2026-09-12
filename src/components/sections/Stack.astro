@@ -1,0 +1,42 @@
+---
+import SectionTitle from '@/components/ui/SectionTitle.astro';
+import Tag from '@/components/ui/Tag.astro';
+import { stack } from '@/data/stack';
+import { useTranslations } from '@/i18n/ui';
+import type { Lang } from '@/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const groups = [
+  { label: t('stack.languages'),  items: stack.filter((i) => i.category === 'language') },
+  { label: t('stack.frameworks'), items: stack.filter((i) => i.category === 'framework') },
+  { label: t('stack.tools'),      items: stack.filter((i) => i.category === 'tool') },
+  { label: t('stack.security'),   items: stack.filter((i) => i.category === 'security') },
+];
+---
+
+<section
+  id="stack"
+  class="nb-border border-t-0 border-x-0 border-b-2 py-24 md:py-32 px-6 md:px-12 nb-texture"
+>
+  <SectionTitle title={t('stack.title')} index="02" />
+
+  <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-[2px] nb-border nb-shadow-lg bg-[var(--color-ink)]">
+    {groups.map((group, i) => (
+      <div class="bg-[var(--color-white)] p-6 md:p-8">
+        <h3 class="text-label mb-6 flex items-center gap-3">
+          <span class="text-[var(--color-muted)]">0{i + 1}</span>
+          {group.label}
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {group.items.map((item) => <Tag label={item.name} />)}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

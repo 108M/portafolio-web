@@ -1,0 +1,118 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Tag from '@/components/ui/Tag.astro';
+import { projects } from '@/data/projects';
+import { useTranslations } from '@/i18n/ui';
+import type { Project, Lang } from '@/types';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+}
+
+const { project, lang } = Astro.props;
+const t = useTranslations(lang);
+const base = lang === 'es' ? '/es' : '';
+
+// Prev/next navigation (wraps around)
+const idx = projects.findIndex((p) => p.slug === project.slug);
+const next = projects[(idx + 1) % projects.length];
+const prev = projects[(idx - 1 + projects.length) % projects.length];
+
+const features = project.features[lang];
+---
+
+<article>
+  <!-- Header -->
+  <header class="nb-border border-t-0 border-x-0 border-b-2 nb-texture px-6 md:px-12 py-16 md:py-24">
+    <a
+      href={`${base}/#projects`}
+      class="inline-flex items-center gap-2 text-label mb-10 hover:underline underline-offset-4"
+    >
+      ← {t('project.back')}
+    </a>
+
+    <p class="text-label text-[var(--color-muted)] mb-4">{project.category[lang]}</p>
+    <h1 class="font-bold uppercase leading-[0.9] tracking-[-0.03em] mb-8" style="font-size: clamp(2.5rem, 8vw, 6rem);">
+      {project.title}
+    </h1>
+    <p class="text-xl md:text-2xl leading-snug max-w-2xl mb-10">{project.short[lang]}</p>
+
+    <div class="flex flex-wrap items-center gap-4">
+      <Button href={project.repoUrl} variant="primary" size="lg" external>
+        {t('projects.code')} ↗
+      </Button>
+      {project.liveUrl && (
+        <Button href={project.liveUrl} variant="outline" size="lg" external>
+          {t('projects.live')} ↗
+        </Button>
+      )}
+    </div>
+  </header>
+
+  <!-- Body: overview + highlights (left) / info panel (right) -->
+  <div class="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr]">
+    <div class="px-6 md:px-12 py-16 md:py-20 nb-border border-t-0 border-x-0 border-b-2 lg:border-b-0 lg:border-r-2 flex flex-col gap-14">
+      <!-- Overview -->
+      <section>
+        <h2 class="text-label text-[var(--color-muted)] mb-5">{t('project.overview')}</h2>
+        <p class="text-lg leading-relaxed max-w-2xl">{project.description[lang]}</p>
+      </section>
+
+      <!-- Highlights -->
+      <section>
+        <h2 class="text-label text-[var(--color-muted)] mb-5">{t('project.highlights')}</h2>
+        <ul class="list-none flex flex-col gap-3 max-w-2xl">
+          {features.map((f) => (
+            <li class="flex gap-4 items-start nb-border nb-shadow-sm bg-[var(--color-white)] px-5 py-4">
+              <span class="font-bold shrink-0" aria-hidden="true">→</span>
+              <span class="leading-relaxed">{f}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+
+    <!-- Info panel -->
+    <aside class="px-6 md:px-12 py-16 md:py-20 flex flex-col gap-8">
+      <div>
+        <h2 class="text-label text-[var(--color-muted)] mb-3">{t('project.language')}</h2>
+        <p class="text-2xl font-bold">{project.language}</p>
+      </div>
+      <div>
+        <h2 class="text-label text-[var(--color-muted)] mb-3">{t('project.category')}</h2>
+        <p class="text-2xl font-bold">{project.category[lang]}</p>
+      </div>
+      <div>
+        <h2 class="text-label text-[var(--color-muted)] mb-4">{t('project.stack')}</h2>
+        <div class="flex flex-wrap gap-2">
+          {project.tags.map((tag) => <Tag label={tag} />)}
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Next project -->
+  <a
+    href={`${base}/projects/${next.slug}`}
+    class="group block nb-border border-x-0 border-b-0 border-t-2 px-6 md:px-12 py-12 hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)] transition-colors"
+  >
+    <span class="text-label text-[var(--color-muted)] group-hover:text-[var(--color-paper)]">{t('project.next')}</span>
+    <div class="flex items-center justify-between gap-6 mt-2">
+      <span class="font-bold uppercase tracking-[-0.02em]" style="font-size: clamp(1.75rem, 4vw, 3rem);">{next.title}</span>
+      <span class="text-3xl md:text-5xl transition-transform group-hover:translate-x-2" aria-hidden="true">→</span>
+    </div>
+  </a>
+
+  <!-- Previous project (smaller) -->
+  <a
+    href={`${base}/projects/${prev.slug}`}
+    class="group flex items-center justify-between gap-6 nb-border border-x-0 border-b-0 border-t-2 px-6 md:px-12 py-6 hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)] transition-colors"
+  >
+    <span class="text-2xl transition-transform group-hover:-translate-x-1" aria-hidden="true">←</span>
+    <div class="text-right">
+      <span class="text-label text-[var(--color-muted)] group-hover:text-[var(--color-paper)] block">{t('project.prev')}</span>
+      <span class="font-bold text-lg leading-tight">{prev.title}</span>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,77 @@
+---
+import SectionTitle from '@/components/ui/SectionTitle.astro';
+import Tag from '@/components/ui/Tag.astro';
+import { experience } from '@/data/experience';
+import { useTranslations } from '@/i18n/ui';
+import type { Lang } from '@/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const base = lang === 'es' ? '/es' : '';
+---
+
+<section
+  id="experience"
+  class="nb-border border-t-0 border-x-0 border-b-2 py-24 md:py-32 px-6 md:px-12"
+>
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+    <!-- Left: title + intro (sticky on desktop) -->
+    <div class="lg:sticky lg:top-24 self-start">
+      <SectionTitle title={t('experience.title')} index="03" />
+    </div>
+
+    <!-- Right: timeline -->
+    <div class="relative">
+      <!-- Vertical timeline line -->
+      <div
+        class="absolute left-3 top-2 bottom-2 w-0.5 bg-[var(--color-ink)]"
+        aria-hidden="true"
+      ></div>
+
+      <ol class="list-none flex flex-col gap-10 pl-12">
+        {experience.map((entry, i) => (
+          <li class="reveal relative" style={`transition-delay: ${i * 90}ms`}>
+            <!-- Timeline dot -->
+            <div
+              class="absolute -left-9 top-1 w-3.5 h-3.5 nb-border bg-[var(--color-paper)] rounded-full"
+              aria-hidden="true"
+            ></div>
+
+            <div class="nb-border nb-shadow bg-[var(--color-white)] p-5">
+              <!-- Type badge + period -->
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <span class="text-label text-[var(--color-ink)] nb-border px-2 py-0.5">
+                  {entry.type === 'education' ? t('experience.education') : t('experience.work')}
+                </span>
+                <time class="text-label text-[var(--color-muted)]">{entry.period}</time>
+              </div>
+
+              <h3 class="text-xl font-bold leading-tight">{entry.title[lang]}</h3>
+              <p class="text-[var(--color-muted)] mt-1 text-sm font-medium">{entry.organization}</p>
+              <p class="mt-3 leading-relaxed text-sm">{entry.description[lang]}</p>
+
+              {entry.tags && entry.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {entry.tags.map((tag) => <Tag label={tag} />)}
+                </div>
+              )}
+
+              {entry.link && (
+                <a
+                  href={`${base}/experience/${entry.link}`}
+                  class="flex items-center justify-between -mx-5 -mb-5 mt-4 px-5 py-3 nb-border border-x-0 border-b-0 border-t-2 text-label font-bold hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)] transition-colors"
+                >
+                  {t('experience.view')} →
+                </a>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

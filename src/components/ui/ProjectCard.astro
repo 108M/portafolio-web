@@ -1,0 +1,70 @@
+---
+import Tag from './Tag.astro';
+import type { Project, Lang } from '@/types';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+  viewLabel: string;
+  codeLabel: string;
+  featuredLabel: string;
+  index?: number;
+}
+
+const { project, lang, viewLabel, codeLabel, featuredLabel, index = 0 } = Astro.props;
+const base = lang === 'es' ? '/es' : '';
+const detailUrl = `${base}/projects/${project.slug}`;
+const title = project.title;
+const short = project.short[lang];
+const category = project.category[lang];
+---
+
+<article
+  class="reveal nb-border nb-shadow-lg flex flex-col bg-[var(--color-white)] h-full group"
+  style={`transition-delay: ${index * 90}ms`}
+>
+  <!-- Clickable main area → project page -->
+  <a href={detailUrl} class="flex flex-col flex-1">
+    <!-- Top stripe: category + language -->
+    <div class="nb-dots h-10 nb-border border-t-0 border-x-0 border-b-2 flex items-center px-4 gap-3">
+      <span class="text-label text-xs">{category}</span>
+      {project.featured && (
+        <span class="ml-auto text-label text-xs">★ {featuredLabel}</span>
+      )}
+    </div>
+
+    <!-- Content -->
+    <div class="p-6 flex flex-col gap-4 flex-1">
+      <h3 class="text-xl font-bold leading-tight group-hover:underline underline-offset-4 decoration-2">
+        {title}
+      </h3>
+
+      <p class="text-[var(--color-ink)] leading-relaxed text-sm flex-1">{short}</p>
+
+      <div class="flex flex-wrap gap-2">
+        {project.tags.slice(0, 4).map((tag) => <Tag label={tag} />)}
+        {project.tags.length > 4 && (
+          <span class="text-label text-[var(--color-muted)] self-center">+{project.tags.length - 4}</span>
+        )}
+      </div>
+    </div>
+  </a>
+
+  <!-- Footer actions -->
+  <div class="flex items-stretch nb-border border-x-0 border-b-0 border-t-2">
+    <a
+      href={detailUrl}
+      class="flex-1 flex items-center justify-center gap-2 py-3 text-label font-bold hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)] transition-colors"
+    >
+      {viewLabel} →
+    </a>
+    <a
+      href={project.repoUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center justify-center gap-2 px-5 py-3 text-label font-bold nb-border border-y-0 border-r-0 border-l-2 hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)] transition-colors"
+    >
+      {codeLabel} ↗
+    </a>
+  </div>
+</article>

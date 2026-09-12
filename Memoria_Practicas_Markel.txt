@@ -1,0 +1,357 @@
+﻿Memoria de prácticas curriculares en Industrial Augmented Reality S.L.
+
+
+
+
+
+
+  
+
+
+
+
+
+Alumno: Markel Alvarez Alonso
+Titulación: Grado en Ingeniería Informática
+Universidad: Universidad Pública de Navarra (UPNA)
+Empresa: Industrial Augmented Reality S.L. (iAR)
+Tutor en empresa: Miguel Ángel Llorente (CTO)
+
+Índice
+1. Introducción        3
+1.1. Presentación, actividad, tamaño e historia        3
+1.2. Sector, mercado, ámbito geográfico y competidores        4
+1.3. Productos propios y la división iAItech        6
+1.4. Plan estratégico        8
+1.5. Análisis DAFO        9
+1.6. Estructura organizativa        10
+1.7. Metodologías de trabajo        11
+1.8. Motivación y retención de personal        12
+1.9. Toma de decisiones en el equipo        13
+1.10. Seguimiento y control del trabajo        13
+2. Experiencia personal en la empresa        14
+2.1. Actividades en las que me he integrado        14
+2.2. Productos, servicios y fases en las que he participado        15
+2.3. Problemas conocidos y soluciones aportadas        16
+2.4. Reuniones: tipos, departamentos y aprendizaje        17
+2.5. Recursos materiales        18
+3. Tareas técnicas realizadas        19
+3.1. Desarrollo de agentes de voz para SMflow        19
+3.2. Personalización de Talk2db para cliente con procesamiento documental        19
+3.3. Desarrollo de RPA inteligente        20
+3.4. Extracción de KPIs de conversaciones de Talk2db        20
+3.5. Migración de proyecto a nueva arquitectura        21
+3.6. Testing de aplicaciones        21
+3.7 Competencias adquiridas        21
+4. Conclusiones y valoración personal        22
+5. Bibliografía        23
+1. Introducción
+1.1. Presentación, actividad, tamaño e historia
+Industrial Augmented Reality S.L. — iAR— es una pyme tecnológica con sede en Pamplona (Avda. Sancho el Fuerte 26 Bis, Oficina 8). 
+La empresa fue fundada el 22 de agosto de 2014 por Ana Monreal, Jon Navarlaz, Miguel Ángel Llorente y Carmen López. Al principio, iAR se centró casi exclusivamente en tecnologías inmersivas: realidad aumentada (AR), realidad virtual (VR) y visión artificial aplicadas a entornos industriales; el objetivo inicial de la empresa era  ayudar a los operarios de fábrica a hacer su trabajo con información superpuesta sobre lo que estaban viendo, reduciendo errores y acelerando procesos.
+Con el tiempo, sin embargo, la empresa se ha adaptado. Aunque la realidad aumentada sigue siendo parte de su identidad, el núcleo real del negocio está en la inteligencia artificial aplicada —que es justo donde yo he estado trabajando—, complementada con el desarrollo de aplicaciones web de apoyo, agentes conversacionales y soluciones de automatización de procesos empresariales. La empresa ha sabido combinar su expertise industrial original con estas nuevas líneas para cubrir un espectro más amplio de necesidades del cliente.
+En cuanto a tamaño, la plantilla ronda los 30 profesionales. En su gran mayoría todos los trabajadores y trabajadoras  son ingenieros o ingenieras de software, desarrolladores, especialistas en IA o analistas de datos. Esta plantilla permite que la empresa pueda abordar proyectos de una complejidad que en otras organizaciones requerirían equipos mucho más grandes, aunque también genera ciertos cuellos de botella cuando se solapan varios proyectos exigentes, algo que he vivido en primera persona durante mi estancia.
+Económicamente, según los datos públicos del Registro Mercantil, iAR factura entre 0,6 y 1,5 millones de euros anuales, con un repunte del 18,17% en 2024 respecto al año anterior. 
+Repasando los hitos de su historia, hay varios momentos relevantes:
+* 2015-2016: Entraron en el programa Impulso Emprendedor de CEIN, con mentorización de MTorres y Correos. Sodena (la Sociedad de Desarrollo de Navarra) les concedió un préstamo participativo de 60.000 euros. Ese mismo año ganaron los Premios EmprendedorXXI de CaixaBank en Navarra, lo que les dio acceso a formación ejecutiva en la Universidad de Cambridge.
+* 2019: Fue un año clave. Crearon la joint venture Smart Lean Solutions junto con la consultora ACMP para digitalizar metodologías Lean. Ana Monreal recibió el Premio Nacional de Ingeniería Industrial. Y firmaron un acuerdo con el CNTA (Centro Nacional de Tecnología y Seguridad Alimentaria) para entrar en el sector agroalimentario.
+* 2021-2023: Constituyeron un consorcio de ciberseguridad industrial con IED y MyVitale, dos empresas navarras de electrónica y software.
+* Actualidad: Están certificados como PYME Innovadora (hasta 2028) y son Agentes Digitalizadores homologados para los fondos NextGenerationEU (programas Kit Digital y Kit Consulting).
+Durante mi estancia pude observar que la empresa mantiene una cultura organizativa propia de compañías tecnológicas de menor tamaño, caracterizada por la cercanía entre dirección y equipos técnicos, una estructura organizativa ágil y una elevada implicación de los empleados en los proyectos. Esta cultura favorece una comunicación fluida y una rápida capacidad de adaptación a nuevas necesidades. 
+  
+
+1.2. Sector, mercado, ámbito geográfico y competidores
+iAR opera en lo que se denomina el sector Industria 4.0. La empresa se mueve en la intersección entre el software industrial a medida, la inteligencia artificial aplicada y la digitalización de procesos. No hacen apps de consumo ni páginas web para comercios locales: su mercado son las plantas de producción, las centrales energéticas, y, cada vez más, las pymes industriales que necesitan digitalizarse.
+El núcleo geográfico original es Navarra y el norte de España (País Vasco, Valle del Ebro), debido a que aquí hay un tejido industrial y de automoción muy potente.A pesar de que su actividad en un principio se basara únicamente en España, la empresa ha conseguido penetrar en el mercado francés. Tienen una delegación en Castres (Occitania) y trabajan de la mano del grupo francés Sirea, especializado en automatismo industrial. Gracias a esta alianza, iAR ha desarrollado proyectos para grandes compañías como EDF (la compañía eléctrica estatal francesa) y Enedis (su filial de distribución).
+En cuanto a los sectores concretos donde trabajan:
+* Energético y utilities: Proyectos de realidad aumentada para supervisión de infraestructuras con Sirea, como la "Consignación Aumentada" para centrales hidroeléctricas de EDF.
+* Naval militar y civil: Desarrollo de aplicaciones colaborativas de AR para Navantia, uno de los mayores astilleros europeos, en colaboración con la Universidad de A Coruña.
+* Automoción: Soluciones inmersivas e industriales para el Grupo Volkswagen. 
+* Agroalimentario: Gracias al acuerdo con CNTA, están introduciendo sistemas de visión artificial y checklist digitales en la industria alimentaria.
+* Salud y biotecnología: Son socios del Navarra Health Cluster.
+A nivel asociativo, forman parte del Polo de Innovación Digital IRIS y del Clúster TIC ATANA, donde además lideran servicios de vigilancia estratégica automatizada mediante IA para otras pymes.
+Respecto a la competencia, el mercado ibérico de realidad aumentada industrial e IA aplicada tiene varios actores relevantes:
+* Innovae: Es probablemente el competidor más directo en el ámbito de la AR industrial pura. Tienen una plataforma propia (ATR) para asistencia técnica remota.
+* Virtualware: Empresa vasca que ha dado el salto a cotizar en mercados bursátiles alternativos. Dominan el desarrollo de simuladores de VR con su plataforma VIROO.
+* Plain Concepts: Mucho más grandes en facturación y plantilla. Compiten en los contratos grandes de integración a medida, sobre todo en el ecosistema Microsoft (HoloLens, Azure AI).
+* Boutiques de nicho: Empresas como LudusGlobal (simulación para prevención de riesgos con VR), Invelon, ARsoft, Deusens o Spikatech completan el paisaje competitivo aunque con un enfoque más limitado.
+Además de estos competidores en el espacio de la realidad aumentada industrial, iAR también compite en el mercado de la inteligencia artificial aplicada y la automatización conversacional. Aquí los rivales son de otra naturaleza: grandes consultoras tecnológicas que están incorporando IA a su oferta, startups y scaleups especializadas en agentes conversacionales y asistentes virtuales, empresas centradas en automatización de llamadas, e integradores de soluciones digitales que compiten en los mismos contratos de transformación de procesos.
+Lo que diferencia a iAR de todos ellos, es que no venden "una app" a secas, venden metodologías empaquetadas que el cliente ya entiende (Smart 5S, Smart GIC) construidas junto a consultores de procesos como ACMP. Y complementan eso con alianzas locales fuertes (Sirea en Francia, IED y MyVitale en ciberseguridad). Es una forma muy inteligente de sortear barreras de entrada sin necesitar un ejército de comerciales.
+  
+
+1.3. Productos propios y la división iAItech
+El catálogo se estructura en varias líneas:
+Smart Lean Solutions: Una suite de aplicaciones para digitalizar procesos Lean en fábricas, desarrollada en colaboración con ACMP:
+* Smart 5S: app móvil para auditorías de orden y limpieza.
+* Smart Efficiency: captura automática de datos en planta para monitorizar OEE y paradas de máquina en tiempo real.
+* Smart GIC: soporte a la Gestión a Intervalo Corto para responsables de línea.
+* Smart GAP: plataforma de gestión de acciones y proyectos de mejora.
+TimeDesk: Una plataforma integral de RRHH que centraliza fichajes, vacaciones, nóminas y reportes laborales. Lo curioso es que la propia iAR lo usa internamente. Durante mis prácticas he fichado con TimeDesk cada día: es simple, hace lo que promete y evita el papeleo absurdo.
+iAR-CHK: Sistema de inspección visual asistida por AR para control de calidad en líneas de fabricación.
+Consultoría Microsoft 365 y Copilot: iAR es Microsoft Partner certificado en IA y AR. Despliegan, forman y dan soporte en todo el ecosistema Microsoft, incluyendo la integración de Copilot.
+iAItech — Inteligencia Artificial Aplicada: Es la división donde se concentra todo lo relacionado con la IA. La empresa tomó la decisión estratégica de segregar esta unidad bajo una marca propia (iaitech.ai) y el movimiento tiene sentido: la IA generativa y los modelos predictivos son ahora mismo el núcleo del crecimiento. Dentro de iAItech se desarrollan:
+* Talk2db: Una herramienta que permite consultar bases de datos usando lenguaje natural, sin necesidad de escribir SQL. Es el proyecto donde más tiempo he pasado durante mis prácticas.
+* SMflow: Una IA telefónica autónoma que responde llamadas, mantiene conversaciones y gestiona citas evaluando disponibilidades en tiempo real. He contribuido al desarrollo de agentes de voz para este producto.
+* Sayton: Una plataforma de productividad y gestión de inventarios que funciona mediante procesamiento de lenguaje natural. "Say what you need, and Sayton adds it instantly" es su eslogan, y describe bastante bien lo que hace.
+* Agentes de asistencia y comerciales: IAs entrenadas con normativas y terminología específica para resolver dudas técnicas o gestionar ventas. La empresa está invirtiendo muchísimo en esta línea.
+Además de estos productos, la división hace mucho trabajo de consultoría en IA: auditorías de datos, implementación de chatbots internos con RAG (Retrieval-Augmented Generation), sistemas de recomendación y detección de anomalías en tiempo real para mantenimiento industrial. Esta división está formada actualmente por un equipo de 8 personas. 
+1.4. Plan estratégico
+Son una empresa privada de tamaño medio y ese tipo de documentos contienen información competitiva sensible. Esto no es algo que se comparta con un estudiante en prácticas, y lo entiendo perfectamente.
+Dicho esto, después de cuatro meses trabajando dentro, observando hacia dónde se mueven y escuchando conversaciones, puedo inferir hacia dónde va la empresa. Creo que las líneas maestras de su estrategia actual son tres:
+1. Apuesta total por la IA (IA First):. La empresa ha entendido que la realidad aumentada, aunque sigue siendo parte del negocio, se ha ido comoditizando.. Pero la IA generativa y los agentes autónomos son ahora mismo lo que todo el mundo quiere, y iAR está pivotando agresivamente hacia ahí. La creación de iAItech como marca separada, la acreditación como Microsoft Partner en IA, y el hecho de que el departamento donde yo he estado sea el que más está creciendo, confirman esto.
+2. De proyecto a producto (SaaSificación): La transición de "te vendo horas de desarrollo" a "te vendo una licencia mensual" es la evolucion en los modelos de negocio de software, y en iAR lo saben. Productos como TimeDesk, Sayton o la suite Smart Lean generan ingresos recurrentes sin que el coste crezca proporcionalmente. En el departamento de IA se hacen proyectos a medida para clientes (como la personalización de Talk2db que yo mismo he estado trabajando), pero siempre con la vista puesta en que lo aprendido revierta en el producto base.
+3. Apalancamiento en fondos europeos: iAR se ha acreditado como Agente Digitalizador para los programas Kit Digital y Kit Consulting (NextGenerationEU). Esto significa que pueden captar clientes cuyo proceso de digitalización está subvencionado, lo cual reduce muchísimo la fricción comercial. En un contexto donde muchas pymes industriales son reticentes a gastar en I+D, que el Estado ponga el dinero cambia completamente la percepción que pueden tener.
+La diversificación del portfolio es una fortaleza, pero puede volverse una debilidad si se dispersan demasiado. Mantener y evolucionar simultáneamente productos de AR industrial, RRHH, IA generativa, asistentes de voz, aplicaciones móviles y ciberseguridad con 30 personas es ambicioso.
+
+
+
+
+
+
+
+
+
+
+1.5. Análisis DAFO
+
+
+	Factores
+	Fortalezas
+	• Densidad de talento técnico muy por encima de la media: casi toda la plantilla es personal de ingeniería de alto nivel.
+• Catálogo de productos SaaS propios (Smart Lean, TimeDesk, Sayton, Talk2db, SMflow) que generan ingresos recurrentes.
+• Aval institucional sólido: PYME Innovadora certificada, Microsoft Partner, Agente Digitalizador homologado.
+• Capacidad demostrada para ejecutar proyectos críticos en grandes corporaciones (EDF, Navantia, Volkswagen).
+• Alianzas estratégicas bien tejidas (Sirea en Francia, ACMP en Lean, IED y MyVitale en ciberseguridad).
+	Debilidades
+	• Plantilla limitada (~30 personas) que puede convertirse en cuello de botella si se solapan varios proyectos grandes simultáneamente. 
+• Riesgo de dispersión: mantener tantos productos y líneas de negocio distintas con un equipo pequeño.
+• Reconocimiento de marca limitado fuera de los nichos industriales y del ecosistema navarro.
+• Dependencia excesiva de personas clave: si se va un senior, se va mucho conocimiento.
+	Oportunidades
+	• Fondos europeos NextGenerationEU que obligan al tejido productivo a digitalizarse. iAR está perfectamente posicionada como Agente Digitalizador.
+• La mayoría de fábricas europeas siguen usando papel y Excel para sus procesos. El mercado para Smart Lean Solutions es enorme.
+• El boom de la IA generativa está generando una demanda disparada de auditorías de datos, chatbots internos y agentes autónomos.
+	Amenazas
+	• Guerra por el talento IT: retener ingenieros de IA es difícil cuando las grandes tecnológicas pagan sueldos desorbitados y ofrecen remoto internacional.
+• Riesgo de comoditización: lo que hoy es diferencial en IA puede ser una feature por defecto en el ecosistema de Google o Microsoft en dos años.
+• Dependencia del ciclo económico: una recesión en la industria pesada europea congelaría muchos contratos.
+	
+
+A partir del análisis realizado, considero que la empresa se encuentra en una posición favorable para aprovechar el crecimiento de la demanda de soluciones basadas en inteligencia artificial y digitalización industrial. No obstante, el principal reto identificado es la capacidad de escalar los equipos de trabajo al mismo ritmo que aumenta la demanda de proyectos, evitando que ello afecte a los plazos de entrega o a la calidad de las soluciones desarrolladas. 
+1.6. Estructura organizativa
+La gobernanza recae directamente sobre los fundadores, que además ocupan posiciones ejecutivas en el día a día: Ana Monreal es la Directora de Desarrollo, Miguel Ángel Llorente es el CTO y mi tutor en la empresa, Jon Navarlaz y Carmen López también están involucrados en la operativa diaria. Estos directivos están involucrados activamente en todas las fases del desarrollo demostrando gran implicación con los proyectos.
+En cuanto a infraestructura dentro de la organización han creado "células externas" en lugar de engordar la estructura central. En vez de montar un departamento de Lean dentro de iAR, crearon Smart Lean Solutions como una entidad separada con ACMP, con su propia dirección (Jon Martorell como CEO). Lo mismo ocurre con el consorcio de ciberseguridad con IED y MyVitale. Esta forma de trabajar les permite:
+* Mantener la agilidad de una startup dentro de iAR.
+* Diversificar riesgos financieros y legales entre varias entidades.
+* Incorporar expertise externo sin necesidad de contratar.
+* Dar visibilidad y autonomía a cada línea de negocio.
+Dentro de la propia iAR, la organización funciona de manera matricial. El departamento de IA (iAItech) se divide en dos equipos: IA1 e IA2, sumando unas 8 personas en total. Yo he estado integrado en IA1, aunque durante mis prácticas he colaborado puntualmente con compañeros del otro equipo y de otros departamentos cuando algún proyecto lo requería. No hay compartimentos estancos: si alguien necesita ayuda con algo y tú sabes, te piden apoyo y ya está.
+En términos generales, la estructura organizativa resulta adecuada para una empresa tecnológica de estas dimensiones, ya que facilita la comunicación entre equipos y favorece la rapidez en la toma de decisiones.  Es ágil, evita burocracia y permite que las decisiones técnicas las tomen quienes entienden de tecnología. Dicho esto, también veo limitaciones:
+* La horizontalidad extrema funciona cuando el equipo es pequeño y todo el mundo es muy bueno. Si la empresa crece significativamente, van a necesitar algo más de estructura.
+* Las células externas (Smart Lean, consorcio ciberseguridad) son inteligentes, pero añaden complejidad de coordinación. A veces da la sensación de que cada entidad va un poco a su aire.
+1.7. Metodologías de trabajo
+En el día a día del desarrollo, el equipo de IA usa metodologías ágiles. No es un Scrum de libro ni un Kanban dogmático, sino una mezcla pragmática que se adapta a lo que cada proyecto necesita, y eso me parece un acierto.
+Tenemos dailies cada mañana, se cuentan avances, bloqueos y prioridades del día. Para la gestión de tareas usamos Trello como tablero principal y Azure DevOps para el registro de horas y la trazabilidad de incidencias más formales. Los sprints no son rígidos: en algunos proyectos se trabaja por sprints de dos semanas, en otros simplemente se avanza por prioridades según lo que el cliente necesita.
+La empresa aplica muchos principios Lean a su propio trabajo. Se nota en cosas como:
+* Cero papel: todo documentado en repositorios, wikis internas y herramientas cloud.
+* Foco en eliminar lo que no aporta valor: si una tarea o una reunión no sirve, se deja de hacer.
+* Iteraciones rápidas: antes que un producto perfecto, prefieren sacar un prototipo funcional y que el cliente (o nosotros mismos) lo pruebe.
+En cuanto al desarrollo de IA en concreto, hay una parte de investigación que no encaja del todo en metodologías ágiles tradicionales.Ciertas tareas o parte del desarrollo requiere tiempo de exploración donde no siempre puedes estimar cuánto vas a tardar. El equipo lo gestiona con bastante sentido común: se dedica un tiempo acotado a investigar y, si no se llega a algo viable, se pivota.
+Creo que la empresa se beneficiaría de formalizar un poco más la documentación interna de ciertos procesos. Ahora mismo hay mucha información que está en la cabeza de unos pocos. Si alguien se va de vacaciones y otro necesita tocar su parte, a veces cuesta. También creo que las retrospectivas podrían ser más sistemáticas: se hacen, pero no con una cadencia fija, y en un equipo tan pequeño son especialmente útiles para detectar roces antes de que se conviertan en problemas.
+1.8. Motivación y retención de personal
+Los ingenieros de IA estamos en un momento donde las ofertas llueven, sobre todo de empresas extranjeras que pagan en remoto con sueldos muy por encima de la media española.
+Dicho esto, lo que he visto en iAR me hace pensar que entienden que el dinero no lo es todo y que han construido un paquete de beneficios y una cultura que, sin ser espectaculares sobre el papel, funcionan en la práctica:
+* Flexibilidad horaria y teletrabajo: No hay un control férreo de horarios. Mientras el trabajo salga y estés localizable en las horas clave, puedes organizarte. El teletrabajo es habitual: parte del equipo trabaja desde casa varios días a la semana sin que eso suponga un problema. Además, los viernes y las vísperas de festivo se hace jornada reducida, y en verano aplican horario intensivo. Para un estudiante que además está acabando el grado, esta flexibilidad marca la diferencia entre poder compaginar todo o volverse loco.
+* Formación continua: Mi primer mes fue un periodo formativo intenso. Me dieron tiempo y recursos para aprender a usar agentes, skills, el stack tecnológico... y esto no se hace solo con becarios. La empresa, al ser Microsoft Partner, necesita mantener a la plantilla certificada y actualizada, y eso es un incentivo potente: sabes que el tiempo que pases aquí va a aumentar tu empleabilidad futura.
+* Cultura de reto intelectual: Los proyectos son interesantes. Estás diseñando agentes de voz, trabajando con embeddings, moviendo arquitecturas enteras a nuevos stacks. 
+* Buen ambiente de trabajo: La empresa organiza comidas mensuales, cestas de Navidad y mantiene canales informales en Teams (grupos de memes, off-topic, etc.) que ayudan a crear un clima distendido. Todo esto parece pequeño, pero suma.
+
+
+Creo que las técnicas de motivación son adecuadas y, sobre todo, son auténticas. No son incentivos artificiales de esos que diseña un consultor de RRHH para que la gente se quede; son consecuencias naturales de cómo funciona la empresa. La flexibilidad, la confianza, la autonomía y la participación en proyectos innovadores son muy útiles si van acompañadas de objetivos claros y feedback regular, y en general eso se cumple. Ahora bien, echo en falta una política de retención más formalizada. No he identificado un plan de carrera documentado, itinerarios de crecimiento profesional ni opciones como phantom shares para los empleados clave. En una empresa de este perfil, donde el valor está en las personas, esto me parece fundamental. 
+1.9. Toma de decisiones en el equipo
+Dentro del departamento de IA, las decisiones se toman con un modelo que yo describiría como "liderazgo con input del equipo". No es una democracia asamblearia donde todo se vota, pero tampoco es un régimen donde el líder suelta directrices y tú ejecutas sin pensar.
+El flujo típico que he visto es:
+1. Surge una necesidad técnica o un problema (elegir arquitectura para un nuevo proyecto, decidir cómo enfocar una feature, resolver un bloqueo).
+2. El equipo lo discute. Se exponen opciones, cada uno da su opinión basándose en su experiencia.
+3. Se genera una propuesta o varias.
+4. El líder del equipo (o Miguel Ángel como CTO, según la envergadura de la decisión) toma la decisión final basándose en esas propuestas.
+Me parece un equilibrio sano. Por un lado, evita la parálisis por análisis que ocurre cuando todo el mundo tiene que ponerse de acuerdo en todo. Por otro, garantiza que quien decide tenga toda la información que el equipo puede aportar.
+En la práctica, he visto que las decisiones técnicas cotidianas (cómo implementar tal cosa, qué librería usar, cómo estructurar un módulo) se toman con mucha autonomía individual. A mí, como becario, al principio me supervisaban más, pero según fui ganando soltura, me dejaban bastante libertad. Si metía la pata, se corregía y se aprendía y siempre era apoyado por figuras como mi responsable directo para ayudarme. 
+Lo que sí echo en falta —y entiendo que es difícil con 8 personas— es un poco más de formalización en las decisiones arquitectónicas importantes. A veces se toma una decisión en una conversación de pasillo y no queda documentada, y tres semanas después alguien pregunta "oye, ¿por qué hicimos esto así?" y ya nadie se acuerda exactamente del razonamiento.
+1.10. Seguimiento y control del trabajo
+Aquí la empresa combina dos herramientas principales:
+* Trello: Para la gestión visual de tareas. Cada proyecto tiene su tablero con columnas tipo "To Do / In Progress / Review / Done". Es simple y funciona.
+* Azure DevOps: Para el registro de horas imputables a cada proyecto/cliente y para la gestión más formal de incidencias y repositorios.
+Además, como ya he mencionado, TimeDesk se usa para el fichaje diario de entrada y salida.
+Las dailies de la mañana funcionan como mecanismo informal de seguimiento: en dos minutos cuentas qué hiciste ayer, qué vas a hacer hoy y si tienes algún bloqueo. Si alguien se está desviando o atascando, se detecta rápido.
+No he percibido un ambiente de microcontrol. No hay nadie mirando cuánto tardas en hacer cada tarea ni comparando tu rendimiento con una métrica absurda. El control existe, pero es más una herramienta de organización que de fiscalización. Se asume que todo el mundo es profesional y quiere hacer bien su trabajo.
+Una cosa que me ha gustado es que las horas se registran con un nivel de detalle razonable pero no obsesivo. 
+2. Experiencia personal en la empresa
+2.1. Actividades en las que me he integrado
+Mi incorporación a iAR tuvo dos fases muy diferenciadas, y creo que ambas fueron necesarias y bien planteadas.
+Fase 1: Formación e investigación (primer mes)
+El primer mes fue intenso en aprendizaje. No me lanzaron directamente a producción —algo que agradecí porque el stack tecnológico y los conceptos con los que trabaja iAItech no son triviales—, sino que me dedicaron tiempo a formarme. Estudié a fondo:
+* Cómo funcionan los agentes de IA: su ciclo de razonamiento, cómo se definen skills, cómo se encadenan tareas.
+* El ecosistema de herramientas de la empresa: Azure, Docker, VPS, GitHub Actions, los repositorios internos.
+* Conceptos de procesamiento de lenguaje natural (PLN), embeddings, bases de datos vectoriales, OCR.
+* La arquitectura general de los productos de iAItech (Talk2db, SMflow, Sayton) y cómo se comunican entre sí.
+Esta fase no fue solo leer documentación. Hacíamos mini-proyectos para poner en práctica lo aprendido. Por ejemplo, desarrollé agentes simples que resolvían tareas concretas, más como ejercicio que como producto final o el desarrollo de un chatbot con Text To Speech o su propio RAG en cual luego utilice como caso de estudio para mi trabajo de fin de grado. Fue una forma muy efectiva de aprender. Además en este proceso formativo redactamos mucha documentación y preparamos presentación las cuales fueron presentadas a Miguel Angel, nuestro tutor en la empresa y CTO. 
+Fase 2: Integración en equipos de trabajo (meses 2 a 4)
+Una vez superada la formación inicial, me incorporé al  trabajo del equipo IA1, dentro del departamento de IA. Aquí ya no eran ejercicios o proyectos para prácticas: eran código que iba a producción, clientes que esperaban resultados, y plazos que cumplir. Durante este tiempo he trabajado en varios proyectos distintos, a veces en paralelo y colaborando con diferentes personas del equipo. 
+Las actividades concretas las detallo en la sección de tareas técnicas, pero en resumen han incluido:
+* Desarrollo de agentes de voz para SMflow.
+* Migración de un proyecto a una nueva arquitectura.
+* Participación en el foro interno de desarrollo asistido por IA.
+* Desarrollo de un RPA con inteligencia artificial.
+* Extracción y análisis de KPIs de conversaciones de Talk2db.
+* Personalización de Talk2db para un cliente con procesamiento de PDFs, OCR y embeddings.
+* Testing de aplicaciones.
+Durante todo este tiempo he interactuado principalmente con los compañeros de IA1 y con Miguel Ángel, pero también he tenido contacto puntual con otros perfiles y equipos cuando algún proyecto lo requería. He trabajado codo con codo tanto con seniors que llevan años en la empresa como con juniors que entraron el año pasado tras sus propias prácticas, lo cual ha sido enriquecedor porque he podido ver dos perspectivas distintas: la del que ya domina y la del que todavía está aprendiendo, como yo.
+2.2. Productos, servicios y fases en las que he participado
+Los productos y servicios concretos en los que he intervenido, junto con la fase en la que se encontraban, son:
+* SMflow (IA telefónica autónoma): He trabajado en la fase de desarrollo y mejora de los agentes de voz. No era un producto desde cero, pero sí estaba en evolución activa, añadiendo capacidades nuevas y refinando las conversaciones.
+* Talk2db (consultas a BD en lenguaje natural): Es donde más tiempo he dedicado. Por un lado, he participado en el desarrollo de una versión personalizada para un cliente que necesitaba funcionalidades específicas, sobre todo en lo relativo a extracción de información de PDFs con OCR y procesamiento de texto. Por otro lado, he desarrollado herramientas para analizar los KPIs de las conversaciones que los usuarios mantienen con Talk2db. En ambos casos estaba en fase de mejora continua sobre un producto ya maduro.
+* RPA con IA: Fue un desarrollo más experimental. Un proyecto para crear un robot de automatización de procesos que utiliza inteligencia artificial para navegar por internet y realizar tareas concretas de forma autónoma. Estaba en fase de prototipo funcional.
+* Migración de arquitectura: Participé en la migración completa de un proyecto a la nueva arquitectura hacia la que la empresa está moviendo sus productos. Fue un trabajo más de backend e infraestructura, en fase de transición.
+Además, colaboré en el foro interno de desarrollo asistido por IA, que es más una iniciativa transversal de la empresa para compartir conocimiento y buenas prácticas sobre cómo usar la propia IA para desarrollar mejor y más rápido.
+2.3. Problemas conocidos y soluciones aportadas
+En cuatro meses he visto varios problemas, tanto técnicos como organizativos. Algunos he podido contribuir a resolverlos; en otros simplemente he observado y aprendido.
+Problema 1: La calidad de las conversaciones de los agentes de voz
+SMflow es un producto muy potente sobre el papel, pero en la práctica conseguir que una IA telefónica mantenga una conversación natural y no suene a robot es endiabladamente difícil. Los usuarios no siguen guiones: preguntan cosas raras, cambian de tema, hablan con ruido de fondo... Durante el desarrollo de los agentes de voz nos encontramos con que el asistente a veces se volvía errático en conversaciones largas o con interrupciones. Mi contribución fue ayudar a refinar los prompts y el flujo de la conversación, probando distintas configuraciones y documentando cuáles daban mejores resultados.
+Problema 2: Cuellos de botella cuando se solapan proyectos
+En varias ocasiones, el equipo de IA (8 personas entre IA1 e IA2) se vio desbordado porque coincidían varias demandas urgentes. Esto generaba estrés y, a veces, retrasos. Yo, como becario, no podía resolver el problema de raíz, pero sí ayudé asumiendo tareas de testing y validación que liberaban a los seniors para centrarse en lo crítico. También aprendí a priorizar y a comunicar cuando no llegaba a algo, en lugar de intentar abarcarlo todo y hacerlo mal.
+Problema 3: Documentación dispersa o inexistente
+Este es quizá el problema más transversal que he visto. Hay partes del código y de la arquitectura que no están documentadas más allá de comentarios sueltos y del conocimiento que reside en la cabeza de quien las hizo. Cuando necesitaba entender por qué tal cosa funcionaba de una manera concreta, a menudo la única vía era preguntar. Esto no es sostenible a largo plazo. Mi granito de arena fue documentar todo lo que yo iba haciendo y, en la medida de lo posible, añadir documentación de las partes que iba tocando, aunque fuera en forma de READMEs o comentarios estructurados.
+Problema 4: Falta de onboarding específico en los flujos de trabajo (Azure y GitHub) Al incorporarme, eché en falta que alguien me explicara al detalle cómo se gestiona el ciclo de vida del software específicamente dentro de la empresa. Aunque herramientas como Azure y GitHub son estándares del sector, cada equipo tiene su propia filosofía para estructurar las ramas, gestionar los entornos y configurar los pipelines de CI/CD (como GitHub Actions). Al principio, esta falta de contexto me supuso una barrera, ya que no tenía del todo claro el flujo exacto para subir código o automatizar tareas sin miedo a romper algo. Como solución, tuve que ser muy proactivo: dediqué tiempo a analizar Pull Requests de mis compañeros, revisar cómo estaban montados los archivos de configuración de las Actions y hacer preguntas muy concretas cuando me atascaba. Poco a poco fui asimilando su metodología y fui anotando todos estos procesos para crear mi propia guía de referencia, algo que creo que será muy útil para facilitar la entrada de futuros becarios o nuevas incorporaciones. 
+2.4. Reuniones: tipos, departamentos y aprendizaje
+Durante mis prácticas he participado en tres tipos de reuniones:
+Dailies (reuniones diarias de equipo)
+Cada mañana, el equipo IA1 se reúne durante unos 10-15 minutos para poner en común el estado del trabajo. Participamos Miguel Ángel Llorente (CTO), Álvaro Enríquez, Javier Urrutia y el resto de compañeros del equipo. El formato es el clásico de las metodologías ágiles: qué hice ayer, qué voy a hacer hoy, tengo algún bloqueo. Son reuniones de pie (bueno, de videollamada porque parte del equipo a veces teletrabaja) y van al grano.
+Lo que he aprendido de estas reuniones:
+* La importancia de prepararte antes. Llegar y decir "ayer hice cosas" no vale. Tienes que ser concreto porque el tiempo es de todos.
+* A comunicar bloqueos sin vergüenza. Al principio me costaba admitir que estaba atascado. Luego entendí que si no lo dices en la daily, pierdes un día entero dando vueltas a algo que igual otro te resuelve en cinco minutos.
+* Se detecta muy rápido quién está saturado y quién tiene capacidad. Es un mecanismo de autorregulación del equipo que funciona.
+Reuniones con clientes
+He asistido a varias reuniones con clientes, sobre todo en el contexto de la personalización de Talk2db. Eran reuniones por videollamada donde el cliente exponía sus necesidades concretas, nosotros explicábamos lo que era viable técnicamente y se negociaban plazos.
+Lo que he aprendido:
+* El cliente no siempre sabe lo que quiere, y a veces pide cosas imposibles o contradictorias. La habilidad está en traducir lo que dice a requerimientos técnicos realistas sin que se sienta frustrado.
+* La comunicación no técnica es una skill infravalorada en ingeniería. Explicar por qué no puedes hacer algo sin sonar a "es que no me apetece" requiere práctica.
+* Hay que ir con deberes hechos. Si el cliente pregunta algo y nadie ha mirado ese punto antes de la reunión, quedas mal y pierdes credibilidad.
+* Tomar notas en tiempo real es fundamental. Las decisiones que se toman en esas reuniones luego se traducen en tareas de Trello, y si no quedan bien registradas, se pierden.
+
+
+
+
+
+
+
+
+Foro interno de desarrollo asistido por IA
+No es una reunión en el sentido tradicional, sino un espacio de intercambio interno donde la gente comparte técnicas, herramientas y trucos sobre cómo usar la IA para desarrollar mejor. Participan personas de distintos departamentos, no solo IA.
+Lo que he aprendido:
+* Hasta los más seniors están aprendiendo constantemente. La rápida evolución del campo de la inteligencia artificial hace necesaria una actualización continua de conocimientos, independientemente del nivel de experiencia de cada profesional. 
+* Compartir conocimiento no es perder poder, es multiplicarlo. Esto que suena a frase de póster motivacional lo he visto en la práctica: cuando alguien descubre un truco útil y lo comparte, el equipo entero mejora.
+* Hay muchas formas de usar la IA en el desarrollo que no se me habrían ocurrido: generación de tests, revisión de código, documentación automática, refactorización asistida...
+En general, las reuniones en iAR son eficientes. Las reuniones observadas durante las prácticas estaban orientadas a objetivos concretos y se utilizaban únicamente cuando aportaban valor al desarrollo del trabajo, evitando cargas organizativas innecesarias. . Si algo se puede resolver por Slack, se resuelve por Slack. Si hace falta una reunión, se convoca con un orden del día claro y se acaba cuando se acaba.
+2.5. Recursos materiales
+Para trabajar, la empresa me proporcionó un mini PC y un monitor. El equipo es de formato reducido, suficiente para la mayor parte del trabajo de desarrollo.
+Los recursos me parecen adecuados en general. Para tareas de desarrollo estándar (escribir código, lanzar scripts, conectarse a servicios cloud) el equipo proporcionado resultó adecuado para la mayor parte de las tareas realizadas, dado que la carga computacional más exigente se ejecutaba principalmente sobre infraestructuras cloud . Si tuviera que entrenar modelos localmente o ejecutar procesos pesados de embeddings, probablemente se quedaría corto, pero la realidad es que la mayor parte del trabajo pesado se hace en la nube (Azure, VPS), así que la máquina local es más un terminal de acceso que una estación de trabajo potente. Como mejora deseable, creo que un equipo algo más potente ayudaría cuando tienes varias herramientas de IA y servicios abiertos a la vez.
+Tenía acceso a todo lo necesario: IDEs, herramientas de desarrollo, Azure DevOps, GitHub Enterprise, Docker, VPS, y acceso a APIs como OpenAI o Claude cuando era necesario. Las licencias no eran un problema.
+En resumen: los recursos materiales han sido correctos para el tipo de trabajo que he realizado. La valoración general es positiva, aunque un equipo algo más potente sería una mejora deseable de cara al futuro.
+
+
+3. Tareas técnicas realizadas
+3.1. Desarrollo de agentes de voz para SMflow
+SMflow es una IA telefónica autónoma que responde llamadas y gestiona citas evaluando disponibilidades en tiempo real. Pertenece a la división iAItech.
+Trabajo realizado:
+* Diseño e implementación de flujos conversacionales para los agentes de voz, definiendo prompts, estados de la conversación y respuestas condicionales.
+* Ajuste del procesamiento de lenguaje natural para mejorar la comprensión de intenciones del usuario en llamadas con ruido de fondo o expresiones coloquiales.
+* Pruebas iterativas con distintas configuraciones del agente y documentación de los resultados para identificar qué patrones de conversación producían mejores tasas de finalización de citas.
+Stack técnico: TypeScript, APIs de voz, Azure Cognitive Services, procesamiento de lenguaje natural.
+3.2. Personalización de Talk2db para cliente con procesamiento documental
+Talk2db permite consultar bases de datos mediante lenguaje natural. Un cliente solicitó una versión adaptada con capacidad de extracción de información desde documentos PDF.
+Trabajo realizado:
+* Diseño e implementación del pipeline de ingesta documental: recepción del PDF, preprocesado de imágenes (binarización, enderezado, eliminación de ruido), OCR mediante motor configurable.
+* Postprocesado del texto extraído: limpieza, normalización y estructuración del contenido.
+* Generación de embeddings mediante modelos de IA para indexar el contenido en una base de datos vectorial, permitiendo búsquedas semánticas sobre los documentos.
+* Modificación del flujo de Talk2db para integrar este nuevo origen de datos, de modo que el usuario pudiera hacer preguntas en lenguaje natural que combinaran consultas a la base de datos tradicional con búsquedas sobre el contenido de los PDFs.
+Stack técnico: Python, TypeScript, Docker, bases de datos vectoriales, modelos de embeddings, OCR (Tesseract con configuración personalizada), Azure.
+3.3. Desarrollo de RPA inteligente
+Contexto: Proyecto de automatización robótica de procesos (RPA) que utiliza inteligencia artificial para navegar por internet de forma autónoma y ejecutar tareas predefinidas.
+Trabajo realizado:
+* Desarrollo del agente de navegación: interpretación de la tarea objetivo, descomposición en pasos atómicos, interacción con elementos web (formularios, botones, extracción de datos).
+* Integración de modelos de IA para la toma de decisiones durante la navegación (identificar qué elemento pulsar, cómo rellenar un campo, validar que la acción fue exitosa).
+* Implementación de mecanismos de tolerancia a fallos: reintentos automáticos cuando una página no cargaba, detección de cambios inesperados en la interfaz web, registro de logs para auditoría.
+Stack técnico: Python, Playwright para automatización web, modelos de IA para razonamiento y toma de decisiones, Docker.
+3.4. Extracción de KPIs de conversaciones de Talk2db
+Contexto: Necesidad interna de medir la calidad y efectividad de las interacciones de los usuarios con Talk2db.
+Trabajo realizado:
+* Desarrollo de un módulo de análisis de logs de conversación que extrae métricas clave: tasa de éxito de consultas, tiempo medio de resolución, puntos de abandono más frecuentes, tipos de preguntas más comunes.
+* Generación de dashboards para visualizar los KPIs y facilitar la toma de decisiones sobre qué áreas del producto necesitaban mejora.
+* Identificación de patrones: consultas que el sistema respondía mal de forma recurrente, temas para los que los usuarios esperaban una respuesta pero el modelo no estaba preparado.
+Stack técnico: Python, TypeScript, Azure, procesamiento de logs.
+3.5. Migración de proyecto a nueva arquitectura
+Contexto: La empresa está en plena transición hacia una arquitectura más moderna y escalable para sus productos. Participé en la migración de uno de los proyectos existentes.
+Trabajo realizado:
+* Análisis del código legacy para entender las dependencias y la lógica de negocio.
+* Reimplementación de módulos en la nueva arquitectura, adaptando las interfaces y asegurando la compatibilidad con el resto del ecosistema.
+* Testing de integración para validar que el comportamiento del sistema migrado era idéntico al original.
+* Documentación de los cambios y de las decisiones técnicas tomadas durante la migración.
+Stack técnico: TypeScript, Python, Docker, VPS, GitHub Actions para CI/CD.
+3.6. Testing de aplicaciones
+Contexto: A lo largo de toda la estancia, he colaborado en tareas de testing y control de calidad de distintas aplicaciones.
+Trabajo realizado:
+* Diseño y ejecución de casos de prueba manuales para validar funcionalidades nuevas.
+* Testing exploratorio para detectar bugs o comportamientos inesperados en los agentes de IA.
+* Reporte de incidencias en Azure DevOps con pasos claros para la reproducción.
+3.7 Competencias adquiridas
+Competencias técnicas
+* Desarrollo de agentes conversacionales de voz y texto.
+* Diseño de sistemas basados en RAG.
+* Procesamiento documental mediante OCR.
+* Generación y utilización de embeddings.
+* Uso de bases de datos vectoriales.
+* Desarrollo de automatizaciones mediante Playwright.
+* Integración de servicios cloud en Azure.
+* Gestión de repositorios y despliegues mediante GitHub y GitHub Actions.
+Competencias profesionales
+* Trabajo en equipos multidisciplinares.
+* Comunicación técnica con clientes.
+* Gestión de tareas mediante metodologías ágiles.
+* Resolución de incidencias en entornos reales de producción.
+* Elaboración de documentación técnica.
+* Presentación de resultados y transferencia de conocimiento.
+
+
+4. Conclusiones y valoración personal
+Llegué a iAR el 2 de febrero con una mezcla de ilusión y nervios. Había estudiado inteligencia artificial en la carrera, pero una cosa es hacer un trabajo académico sobre redes neuronales y otra muy distinta es enfrentarte a productos reales, con clientes reales, donde tus decisiones tienen consecuencias. Cuatro meses después, puedo decir sin exagerar que estas prácticas han sido la experiencia más formativa de todo el grado.
+Me llevo mucho aprendizaje técnico, por supuesto. He trabajado con tecnologías que apenas había tocado en la universidad: agentes de IA, embeddings, bases de datos vectoriales, RPA, pipelines de OCR... He visto cómo se organiza el código en un entorno profesional, cómo se gestionan las dependencias, cómo se despliega en producción. Pero si tuviera que destacar lo más valioso, no sería lo técnico.
+Lo más valioso ha sido aprender a trabajar. A organizarme el día sin que nadie me persiguiera. A decir "estoy atascado, necesito ayuda" sin sentir que estaba fracasando. A preparar una reunión con un cliente para no hacer el ridículo. A leer código escrito por otra persona y entenderlo sin que me lo explicaran línea por línea. A priorizar cuando tienes tres cosas urgentes y solo tiempo para una. Eso no te lo enseña ninguna asignatura.
+También he aprendido a ser crítico —en el buen sentido— con lo que veo. Durante estos meses he desarrollado opiniones propias sobre cómo se trabaja en iAR, y no todas son positivas. La empresa tiene virtudes evidentes (el nivel técnico, la cercanía, la variedad de proyectos, la ausencia de burocracia), pero también tiene áreas de mejora que he señalado a lo largo de esta memoria: la documentación interna es escasa, los recursos materiales a veces son justos, la dependencia de personas clave es alta y la estrategia de retención de talento debería formalizarse más.
+¿Volvería a hacer las prácticas en iAR? Sin dudarlo. ¿Recomendaría la empresa a otro estudiante? También. Pero con una advertencia: aquí se aprende mucho porque se te exige mucho. No es una empresa para quien busca un sitio tranquilo donde cubrir el expediente y que le digan exactamente lo que tiene que hacer cada minuto. La autonomía es alta, y eso es una bendición para quien quiere aprender y una trampa para quien no.
+De cara al futuro, estas prácticas me han confirmado que la inteligencia artificial aplicada es el área donde quiero desarrollar mi carrera profesional. He visto de primera mano el impacto que estas tecnologías pueden tener en entornos reales, y tengo claro que quiero seguir profundizando. Me gustaría seguir formándome en arquitecturas de agentes, modelos de lenguaje y MLOps, que son áreas donde siento que apenas he arañado la superficie.
+Por último, quiero agradecer a todo el equipo de iAR, y en especial a Miguel Ángel, por la paciencia y la confianza. No es habitual que una empresa dedique el primer mes entero a formar a un becario antes de ponerlo a producir. Ese tiempo de inversión dice mucho de la cultura de la empresa y de su compromiso con quienes empiezan.
+5. Bibliografía
+[1] iAR, “iar — especialistas en ia y desarrollo de software,” s. f. https://www.iar-soft.com/
+[2] Navarra Health Cluster, “iar — navarra health cluster,” s. f. https://navarrahealthcluster.com/socias/iar/
+[3] Atana, “iar — atana,” s. f. https://www.atana.org/asociado/iar/
+[4] Cadena SER, “iar revoluciona la industria con la realidad aumentada y la visión artificial,” 2019. https://cadenaser.com/emisora/2019/01/24/radio_pamplona/1548359671_491212.html
+[5] Semantic Scholar, “dialogue enhanced extended reality: interactive system for the operator 4.0,” s. f. (No se proporcionó enlace para esta referencia)
+[6] iAR, “iar — especialistas en ia y desarrollo de software (productos),” s. f. https://www.iar-soft.com/productos/
+[7] CNTA, “iar y cnta firman un acuerdo de colaboracion para ofrecer servicios de digitalizacion a la industria alimentaria,” 2019. https://www.cnta.es/noticias-y-eventos/notas-de-prensa/iar-y-cnta-firman-un-acuerdo-de-colaboracion-para-ofrecer-servicios-de-digitalizacion-a-la-industria-alimentaria/
+[8] Google Play, “sayton — apps on google play,” s. f. https://play.google.com/store/apps/details?id=ai.sayton.twa
+[9] Prospeo, “smart lean solutions overview — prospeo,” s. f. https://prospeo.io/c/smart-lean-solutions
+[10] Empresite, “industrial augmented reality sl. — empresite,” s. f. https://empresite.eleconomista.es/INDUSTRIAL-AUGMENTED-REALITY.html
+[11] CaixaBank, “la empresa iar gana la 10ª edición de los premios emprendedorxxi en navarra,” 2016. https://www.caixabank.com/es/actualidad/noticias/la-empresa-industrial-augmented-reality-iar-gana-la-10-edicion-de-los-premios-emprendedorxxi-en-navarra--1775-c-25354--
+[12] CEIN, “sodena invierte en iar,” 2016. https://www.cein.es/noticias/2016/sodena-invierte-en-iar
+[13] CEIN, “smart lean solutions — cein,” s. f. https://navarrastartups.cein.es/en/startups/smart-lean-solutions/
+[14] ACMP, “acmp | mejoramos procesos. desarrollamos personas,” s. f. https://acmplean.com/
+[15] Navarra.com, “la navarra ana monreal y la empresa das-nano, galardonados,” 2019. https://navarra.okdiario.com/articulo/sociedad/ana-monreal-navarra-premios-nacionales-ingenieria-industrial-das-nano/20190920152121289434.html
+[16] Sirea, “le "premio nacional" de l'ingénierie industrielle pour ana monreal vidal | sirea,” 2019. https://www.sireagroup.com/2019/09/09/premio-nacional-ingenierie-industrielle-ana-monreal-vidal/
+[17] Navarra Capital, “ied, iar y myvitale crean una empresa de ciberseguridad — navarra capital,” 2023. https://navarracapital.es/ied-iar-y-myvitale-crean-una-empresa-de-ciberseguridad-para-fabricantes-de-software-y-hardware/
+[18] iAR Kit Consulting, “software industrial, ar e ia para la fábrica conectada — iar kit consulting,” s. f. https://www.iar-soft.com/kit-consulting/
+[19] Cinco Días, “industrial augmented reality sl | datos de empresa — cinco días,” s. f. https://cincodias.elpais.com/directorio-empresas/empresa/6575215/industrial-augmented-reality
+[20] iAItech, “iaitech — ia no generativa,” s. f. https://iaitech.ai/ia-no-generativa
+[21] MDPI, “creating collaborative augmented reality experiences for industry 4.0,” 2020. https://www.mdpi.com/2076-3417/10/24/9073
+[22] IRIS Navarra, “iar homologa un servicio para la digitalización de procesos industriales — iris navarra,” s. f. https://www.irisnavarra.com/es/noticias/iar-homologa-un-servicio-para-la-digitalizacion-de-procesos-industriales
+[23] Atana, “catálogo de inteligencia artificial de navarra,” s. f. https://ia.atana.org/

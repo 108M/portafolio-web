@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string;
+  index?: string; // e.g. "01", "02"
+}
+
+const { title, index } = Astro.props;
+---
+
+<div class="reveal flex items-end gap-4 mb-12 md:mb-16">
+  {index && (
+    <span class="text-label text-[var(--color-muted)] mb-2 shrink-0">
+      [{index}]
+    </span>
+  )}
+  <h2 class="text-headline">{title}</h2>
+</div>

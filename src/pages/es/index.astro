@@ -1,0 +1,22 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Marquee from '@/components/Marquee.astro';
+import About from '@/components/sections/About.astro';
+import Stack from '@/components/sections/Stack.astro';
+import Experience from '@/components/sections/Experience.astro';
+import Projects from '@/components/sections/Projects.astro';
+import Contact from '@/components/sections/Contact.astro';
+
+const lang = 'es' as const;
+---
+
+<Layout>
+  <Hero lang={lang} />
+  <Marquee />
+  <About lang={lang} />
+  <Stack lang={lang} />
+  <Experience lang={lang} />
+  <Projects lang={lang} />
+  <Contact lang={lang} />
+</Layout>

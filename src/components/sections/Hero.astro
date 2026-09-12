@@ -1,0 +1,120 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Tag from '@/components/ui/Tag.astro';
+import { useTranslations } from '@/i18n/ui';
+import type { Lang } from '@/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const roleLines = t('hero.role').split('\n');
+const expLabelLines = t('hero.exp.label').split('\n');
+const heroStack = ['Python', 'TypeScript', 'React', 'Node.js', 'FastAPI', 'Docker', 'Azure', 'Linux'];
+---
+
+<section class="min-h-[calc(100svh-3.5rem)] flex flex-col">
+  <!-- Top bar: availability status -->
+  <div class="nb-border border-t-0 border-x-0 border-b-2 flex items-stretch">
+    <div class="flex items-center gap-3 px-6 md:px-12 py-4 nb-border border-t-0 border-l-0 border-b-0 border-r-2">
+      <span class="relative flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background: var(--color-green);"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3" style="background: var(--color-green);"></span>
+      </span>
+      <span class="font-bold uppercase tracking-widest text-sm">{t('hero.badge.available')}</span>
+    </div>
+  </div>
+
+  <!-- Body: name (left) + role & pitch (right) -->
+  <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 nb-texture">
+    <!-- Left: identity — name + facts grouped together -->
+    <div class="px-6 md:px-12 py-12 lg:py-14 flex flex-col justify-center gap-10 nb-border border-t-0 border-l-0 border-b-2 lg:border-b-0 lg:border-r-2">
+      <h1 class="font-bold uppercase leading-[0.9] tracking-[-0.03em]" style="font-size: clamp(2.5rem, 6vw, 5rem);">
+        <span class="block">Markel</span>
+        <span class="block">Álvarez</span>
+        <span class="block">Alonso</span>
+      </h1>
+
+      <!-- Quick facts: experience + stack -->
+      <div class="flex flex-col gap-6 max-w-md">
+        <!-- Experience (clickable → jumps to Experience section) -->
+        <a
+          href="#experience"
+          class="nb-border nb-shadow nb-press px-5 py-4 flex items-center gap-4 bg-[var(--color-white)] w-fit group"
+          aria-label={lang === 'en' ? 'Go to experience section' : 'Ir a la sección de experiencia'}
+        >
+          <span class="font-bold leading-none" style="font-size: 2.75rem;">{t('hero.exp.value')}</span>
+          <span class="text-label text-[var(--color-muted)] leading-tight">
+            {expLabelLines.map((line) => (
+              <span class="block">{line}</span>
+            ))}
+          </span>
+          <span class="text-xl ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Stack -->
+        <div>
+          <p class="text-label text-[var(--color-muted)] mb-3">{t('hero.stack.label')}</p>
+          <div class="flex flex-wrap gap-2">
+            {heroStack.map((tech) => <Tag label={tech} />)}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: role + pitch + CTAs vertically centered -->
+    <div class="px-6 md:px-12 py-12 lg:py-14 flex flex-col justify-center gap-10">
+      <h2 class="font-bold uppercase leading-[0.95] tracking-[-0.02em]" style="font-size: clamp(2rem, 4.5vw, 3.75rem);">
+        {roleLines.map((line) => (
+          <span class="block">{line}</span>
+        ))}
+      </h2>
+
+      <div class="flex flex-col gap-8">
+        <p class="text-lg md:text-xl leading-relaxed max-w-md">
+          {t('hero.intro')}
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <Button href="#projects" variant="primary" size="lg">
+            {t('hero.cta.work')} ↓
+          </Button>
+          <Button href="#contact" variant="outline" size="lg">
+            {t('hero.cta.contact')} →
+          </Button>
+          <Button href="https://github.com/108M" variant="outline" size="lg" external>
+            {t('hero.cta.github')} ↗
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar: scroll hint + social links (frames the hero) -->
+  <div class="nb-border border-x-0 border-b-0 border-t-2 flex items-stretch text-label">
+    <div class="flex items-center gap-3 px-6 md:px-12 py-4 nb-border border-t-0 border-l-0 border-b-0 border-r-2 text-[var(--color-muted)]">
+      <span>{lang === 'en' ? 'Scroll' : 'Baja'}</span>
+      <span class="animate-bounce" aria-hidden="true">↓</span>
+    </div>
+    <div class="ml-auto flex items-stretch">
+      <a
+        href="https://github.com/108M"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center px-6 py-4 nb-border border-y-0 border-r-0 border-l-2 hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)] transition-colors"
+      >
+        GitHub ↗
+      </a>
+      <a
+        href="https://www.linkedin.com/in/markel-alvarez-alonso-65013a360/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:flex items-center px-6 py-4 nb-border border-y-0 border-r-0 border-l-2 hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)] transition-colors"
+      >
+        LinkedIn ↗
+      </a>
+    </div>
+  </div>
+</section>

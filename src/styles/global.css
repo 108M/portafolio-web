@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ─── FONTS ─────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── DESIGN TOKENS ─────────────────────────────────────────────── */
+@theme {
+  /* Paleta monocromática neo-brutalista */
+  --color-ink:      #0a0a0a;
+  --color-paper:    #f5f0e8;
+  --color-white:    #ffffff;
+  --color-muted:    #6b6b6b;
+  --color-subtle:   #d4cfc5;
+  --color-green:    #22c55e;   /* estado "disponible" — único acento */
+
+  /* Tipografía */
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+
+  /* Bordes */
+  --border-ink: 2px solid #0a0a0a;
+
+  /* Sombras duras — sin blur, firma del neo-brutalism */
+  --shadow-sm:  2px 2px 0px #0a0a0a;
+  --shadow-md:  4px 4px 0px #0a0a0a;
+  --shadow-lg:  6px 6px 0px #0a0a0a;
+  --shadow-xl:  8px 8px 0px #0a0a0a;
+}
+
+/* ─── RESET ─────────────────────────────────────────────────────── */
+/* Dentro de @layer base para que las utilidades de Tailwind (@layer
+   utilities) ganen: si esto va sin capa, `* { padding: 0 }` anularía
+   px-*/py-*/m-* en toda la web. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* ─── NEO-BRUTALIST UTILITIES ────────────────────────────────────── */
+
+/* Borde estándar del sistema */
+.nb-border {
+  border: var(--border-ink);
+}
+
+/* Sombras duras */
+.nb-shadow-sm  { box-shadow: var(--shadow-sm); }
+.nb-shadow     { box-shadow: var(--shadow-md); }
+.nb-shadow-lg  { box-shadow: var(--shadow-lg); }
+.nb-shadow-xl  { box-shadow: var(--shadow-xl); }
+
+/* Efecto "presionar" — elemento se desplaza hacia su sombra al interactuar */
+.nb-press {
+  transition: transform 80ms ease, box-shadow 80ms ease;
+}
+.nb-press:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-sm);
+}
+.nb-press:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+/* Patrón de puntos decorativo (fuerte, para paneles pequeños) */
+.nb-dots {
+  background-image: radial-gradient(#0a0a0a 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Textura sutil y cálida para diferenciar secciones sin vaciarlas */
+.nb-texture {
+  background-color: var(--color-paper);
+  background-image: radial-gradient(var(--color-subtle) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Patrón de líneas diagonal */
+.nb-lines {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    #0a0a0a 8px,
+    #0a0a0a 9px
+  );
+}
+
+/* ─── TIPOGRAFÍA BASE ────────────────────────────────────────────── */
+.text-display {
+  font-size: clamp(3.5rem, 12vw, 11rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.text-headline {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.text-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Marquee / cinta corredera brutalista */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Respeta la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ─── SCROLL REVEAL ──────────────────────────────────────────────── */
+/* Solo se ocultan si hay JS (html.js) para no romper sin JavaScript. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

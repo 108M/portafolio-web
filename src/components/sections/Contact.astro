@@ -1,0 +1,67 @@
+---
+import SectionTitle from '@/components/ui/SectionTitle.astro';
+import Button from '@/components/ui/Button.astro';
+import { useTranslations } from '@/i18n/ui';
+import type { Lang } from '@/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const email = 'alvarezalonsomarkel@gmail.com';
+---
+
+<section
+  id="contact"
+  class="py-24 px-8 md:px-12 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+>
+  <!-- Left: title + copy -->
+  <div>
+    <SectionTitle title={t('contact.title')} index="05" />
+    <p class="text-lg leading-relaxed max-w-md">
+      {t('contact.body')}
+    </p>
+    <div class="reveal mt-10 nb-border nb-shadow-lg p-6 inline-block">
+      <p class="text-label text-[var(--color-muted)] mb-1">Email</p>
+      <a
+        href={`mailto:${email}`}
+        class="font-bold text-lg hover:underline underline-offset-4 break-all"
+      >
+        {email}
+      </a>
+    </div>
+  </div>
+
+  <!-- Right: CTA buttons -->
+  <div class="reveal flex flex-col gap-4">
+    <Button
+      href={`mailto:${email}`}
+      variant="primary"
+      size="lg"
+      class="w-full justify-center"
+    >
+      {t('contact.email')} ↗
+    </Button>
+    <Button
+      href="https://github.com/108M"
+      variant="outline"
+      size="lg"
+      external
+      class="w-full justify-center"
+    >
+      {t('contact.github')} ↗
+    </Button>
+    <Button
+      href="https://www.linkedin.com/in/markel-alvarez-alonso-65013a360/"
+      variant="outline"
+      size="lg"
+      external
+      class="w-full justify-center"
+    >
+      {t('contact.linkedin')} ↗
+    </Button>
+  </div>
+</section>

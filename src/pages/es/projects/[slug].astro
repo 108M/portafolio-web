@@ -1,0 +1,21 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ProjectDetail from '@/components/ProjectDetail.astro';
+import { projects } from '@/data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const lang = 'es' as const;
+const title = `${project.title} — Markel Álvarez`;
+const description = project.short.es;
+---
+
+<Layout title={title} description={description}>
+  <ProjectDetail project={project} lang={lang} />
+</Layout>

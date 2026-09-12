@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://markel.dev/sitemap-index.xml

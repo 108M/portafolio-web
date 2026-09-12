@@ -1,0 +1,66 @@
+---
+import SectionTitle from '@/components/ui/SectionTitle.astro';
+import { useTranslations } from '@/i18n/ui';
+import type { Lang } from '@/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section
+  id="about"
+  class="nb-border border-t-0 border-x-0 border-b-2 grid grid-cols-1 lg:grid-cols-2"
+>
+  <!-- Left: decorative block -->
+  <div class="nb-dots nb-border border-t-0 border-l-0 border-b-0 lg:border-r-2 p-8 md:p-12 flex items-center justify-center min-h-72 lg:min-h-0">
+    <div class="reveal nb-border nb-shadow-xl bg-[var(--color-ink)] w-full max-w-xs">
+      <div class="aspect-square flex items-center justify-center">
+        <span class="text-display text-[var(--color-paper)]" style="font-size: clamp(5rem, 14vw, 9rem);">MA</span>
+      </div>
+      <div class="nb-border border-x-0 border-b-0 border-t-2 border-[var(--color-paper)] px-5 py-4 flex items-center justify-between text-[var(--color-paper)]">
+        <span class="text-label">Pamplona</span>
+        <span class="text-label">Navarra · ES</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: text content -->
+  <div class="p-8 md:p-16 lg:p-24 flex flex-col justify-center">
+    <SectionTitle title={t('about.title')} index="01" />
+    <p class="reveal text-lg leading-relaxed max-w-lg">
+      {t('about.body')}
+    </p>
+
+    <!-- Quick facts -->
+    <dl class="reveal mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="nb-border nb-shadow p-4">
+        <dt class="text-label text-[var(--color-muted)] mb-1">
+          {lang === 'en' ? 'Education' : 'Formación'}
+        </dt>
+        <dd class="font-bold">UPNA — {lang === 'en' ? 'Computer Engineering' : 'Ing. Informática'}</dd>
+      </div>
+      <div class="nb-border nb-shadow p-4">
+        <dt class="text-label text-[var(--color-muted)] mb-1">
+          {lang === 'en' ? 'Currently' : 'Actualmente'}
+        </dt>
+        <dd class="font-bold">{lang === 'en' ? 'MSc Cybersecurity' : 'Máster Ciberseguridad'}</dd>
+      </div>
+      <div class="nb-border nb-shadow p-4">
+        <dt class="text-label text-[var(--color-muted)] mb-1">
+          {lang === 'en' ? 'Based in' : 'Ubicación'}
+        </dt>
+        <dd class="font-bold">Navarra, España</dd>
+      </div>
+      <div class="nb-border nb-shadow p-4">
+        <dt class="text-label text-[var(--color-muted)] mb-1">
+          {lang === 'en' ? 'Focus' : 'Especialidad'}
+        </dt>
+        <dd class="font-bold">{lang === 'en' ? 'Security & Systems' : 'Seguridad & Sistemas'}</dd>
+      </div>
+    </dl>
+  </div>
+</section>

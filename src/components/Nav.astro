@@ -1,0 +1,117 @@
+---
+import { useTranslations, getAlternatePath } from '@/i18n/ui';
+import type { Lang } from '@/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const base = lang === 'es' ? '/es' : '';
+const navLinks = [
+  { href: `${base}/#about`,      label: t('nav.about') },
+  { href: `${base}/#stack`,      label: t('nav.stack') },
+  { href: `${base}/#experience`, label: t('nav.experience') },
+  { href: `${base}/#projects`,   label: t('nav.projects') },
+  { href: `${base}/#contact`,    label: t('nav.contact') },
+];
+
+const altLang = lang === 'en' ? 'es' : 'en';
+const altPath = getAlternatePath(Astro.url, altLang);
+---
+
+<header class="sticky top-0 z-50 nb-border border-t-0 border-x-0 border-b-2 bg-[var(--color-ink)]">
+  <nav class="relative max-w-7xl mx-auto px-6 md:px-12 h-14 flex items-center justify-center">
+    <!-- Desktop links (centered) -->
+    <ul class="hidden md:flex items-center gap-1 list-none" role="list">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-[var(--color-paper)] text-label px-4 py-1 hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Right controls: language switcher + mobile menu -->
+    <div class="absolute right-6 md:right-12 top-0 h-full flex items-center gap-3">
+      <a
+        href={altPath}
+        class="text-label text-[var(--color-paper)] nb-border border-[var(--color-paper)] px-2 py-1 hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors"
+        aria-label={`Switch to ${altLang.toUpperCase()}`}
+      >
+        {altLang.toUpperCase()}
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="menu-btn"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer"
+      >
+        <span class="block w-6 h-0.5 bg-[var(--color-paper)] transition-all" id="bar1"></span>
+        <span class="block w-6 h-0.5 bg-[var(--color-paper)] transition-all" id="bar2"></span>
+        <span class="block w-6 h-0.5 bg-[var(--color-paper)] transition-all" id="bar3"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-[var(--color-ink)] border-t-2 border-white/20"
+    role="navigation"
+  >
+    <ul class="list-none px-6 py-4 flex flex-col gap-1" role="list">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="mobile-link block text-[var(--color-paper)] text-label py-3 border-b border-white/10 hover:text-white"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(isOpen));
+    if (isOpen) {
+      bar1?.classList.add('rotate-45', 'translate-y-2');
+      bar2?.classList.add('opacity-0');
+      bar3?.classList.add('-rotate-45', '-translate-y-2');
+    } else {
+      bar1?.classList.remove('rotate-45', 'translate-y-2');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-2');
+    }
+  });
+
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+      bar1?.classList.remove('rotate-45', 'translate-y-2');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-2');
+    });
+  });
+</script>

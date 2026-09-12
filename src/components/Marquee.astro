@@ -1,0 +1,57 @@
+---
+// Cada elemento con su icono para diferenciarlos claramente.
+// Iconos: SVG inline monocromo (heredan currentColor).
+const items = [
+  { label: 'Software Engineering', icon: '<path d="m9 8-4 4 4 4"/><path d="m15 8 4 4-4 4"/>' },
+  { label: 'Cybersecurity',        icon: '<path d="M12 3 5 6v5c0 4 3 7 7 8 4-1 7-4 7-8V6z"/>' },
+  { label: 'Python',               icon: '<path d="m4 7 4 4-4 4"/><path d="M12 15h6"/>' },
+  { label: 'Linux',                icon: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 2.5 2.5L7 14"/><path d="M12.5 14H16"/>' },
+  { label: 'Pentesting',           icon: '<path d="M8 9a4 4 0 0 1 8 0v4a4 4 0 0 1-8 0z"/><path d="M8 11H4M20 11h-4M8 15H4M20 15h-4M10 6 8.5 4M14 6l1.5-2"/>' },
+  { label: 'Networks',             icon: '<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6"/>' },
+  { label: 'Docker',               icon: '<path d="M12 3 3 7.5 12 12l9-4.5z"/><path d="M3 7.5v9L12 21l9-4.5v-9"/><path d="M12 12v9"/>' },
+  { label: 'Problem Solving',      icon: '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M8 14a5 5 0 1 1 8 0c-.7.9-1 1.6-1 3H9c0-1.4-.3-2.1-1-3Z"/>' },
+];
+
+// Repetimos el set lo suficiente para que UNA mitad supere el ancho del
+// viewport; luego duplicamos esa mitad. Al animar translateX(-50%) el
+// contenido siempre llena la pantalla → bucle sin saltos ni huecos.
+const group = [...items, ...items, ...items];
+const track = [...group, ...group];
+---
+
+<div class="nb-border border-x-0 border-t-0 border-b-2 bg-[var(--color-ink)] text-[var(--color-paper)] overflow-hidden py-4 select-none">
+  <div class="marquee-track flex w-max whitespace-nowrap">
+    {track.map((item) => (
+      <span class="flex items-center gap-3 px-8">
+        <svg
+          class="w-5 h-5 shrink-0"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          set:html={item.icon}
+        />
+        <span class="text-label">{item.label}</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee-track {
+    animation: marquee-scroll 40s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+</style>
