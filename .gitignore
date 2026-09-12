@@ -31,3 +31,4 @@ clip.mjs
 mob.mjs
 sec.mjs
 *.png
+!public/**/*.png
