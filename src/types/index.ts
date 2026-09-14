@@ -15,7 +15,6 @@ export interface Project {
   language: string;                    // primary language
   repoUrl: string;
   liveUrl?: string;
-  image?: string;                      // card thumbnail
   screenshots?: string[];              // detail page gallery
   year: string;
   featured: boolean;
