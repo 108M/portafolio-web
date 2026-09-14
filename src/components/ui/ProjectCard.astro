@@ -25,6 +25,17 @@ const category = project.category[lang];
 >
   <!-- Clickable main area → project page -->
   <a href={detailUrl} class="flex flex-col flex-1">
+    {project.image && (
+      <div class="aspect-video w-full overflow-hidden nb-border border-t-0 border-x-0 border-b-2">
+        <img
+          src={project.image}
+          alt={`${title} screenshot`}
+          loading="lazy"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    )}
+
     <!-- Top stripe: category + language -->
     <div class="nb-dots h-10 nb-border border-t-0 border-x-0 border-b-2 flex items-center px-4 gap-3">
       <span class="text-label text-xs">{category}</span>

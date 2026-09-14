@@ -20,6 +20,11 @@ const next = projects[(idx + 1) % projects.length];
 const prev = projects[(idx - 1 + projects.length) % projects.length];
 
 const features = project.features[lang];
+const liveHref = project.liveUrl
+  ? project.liveUrl.startsWith('http')
+    ? project.liveUrl
+    : `${base}${project.liveUrl}`
+  : undefined;
 ---
 
 <article>
@@ -42,13 +47,30 @@ const features = project.features[lang];
       <Button href={project.repoUrl} variant="primary" size="lg" external>
         {t('projects.code')} ↗
       </Button>
-      {project.liveUrl && (
-        <Button href={project.liveUrl} variant="outline" size="lg" external>
+      {liveHref && (
+        <Button href={liveHref} variant="outline" size="lg" external={project.liveUrl!.startsWith('http')}>
           {t('projects.live')} ↗
         </Button>
       )}
     </div>
   </header>
+
+  <!-- Screenshots -->
+  {project.screenshots && project.screenshots.length > 0 && (
+    <section class="nb-border border-t-0 border-x-0 border-b-2 px-6 md:px-12 py-16 md:py-20">
+      <h2 class="text-label text-[var(--color-muted)] mb-6">{t('project.gallery')}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {project.screenshots.map((src) => (
+          <img
+            src={src}
+            alt={`${project.title} screenshot`}
+            loading="lazy"
+            class="w-full h-auto nb-border nb-shadow-sm"
+          />
+        ))}
+      </div>
+    </section>
+  )}
 
   <!-- Body: overview + highlights (left) / info panel (right) -->
   <div class="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr]">

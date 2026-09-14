@@ -1,0 +1,113 @@
+---
+import Button from '@/components/ui/Button.astro';
+import { replaySteps, replayImpact, replayTotals } from '@/data/ot-ics-replay';
+import type { Lang } from '@/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const base = lang === 'es' ? '/es' : '';
+
+const copy = lang === 'es'
+  ? {
+      back: '← Volver al proyecto',
+      kicker: 'Replay de ataque real (no interactivo)',
+      title: 'Ataque → detección, con datos reales',
+      intro:
+        'Este laboratorio corre 100% aislado a propósito: expone un PLC Modbus real sin autenticación, así que dejarlo accesible desde internet sería repetir el mismo fallo de seguridad que el proyecto existe para demostrar. En su lugar, esto es un replay fiel de una ejecución real del laboratorio — las alertas, timestamps y conteos de abajo vienen directamente de detection/evidence/eve.json, sin inventar nada.',
+      why: '¿Por qué no está "levantado"?',
+      whyBody:
+        'Mantener el PLC virtual accesible públicamente 24/7 significaría (a) exponer un protocolo industrial sin autenticación a cualquiera en internet, y (b) pagar infraestructura para un contenedor que solo tiene sentido dentro de una red aislada. Este replay te deja ver exactamente lo que pasó — ataque real, detección real — sin ese riesgo.',
+      totals: `${replayTotals.totalAlerts} alertas · ${replayTotals.distinctSignatures} técnicas distintas · ventana de ${new Date(replayTotals.windowStart).toLocaleTimeString('es-ES')} a ${new Date(replayTotals.windowEnd).toLocaleTimeString('es-ES')}`,
+      evidence: 'Evidencia (alerta real de Suricata)',
+      impact: 'Impacto observado',
+      mitigation: 'Mitigación',
+      alerts: (n: number) => `${n} alerta${n === 1 ? '' : 's'}`,
+    }
+  : {
+      back: '← Back to project',
+      kicker: 'Real attack replay (not interactive)',
+      title: 'Attack → detection, with real data',
+      intro:
+        'This lab runs fully isolated on purpose: it exposes a real, unauthenticated Modbus PLC, so leaving it reachable from the internet would repeat the exact security failure the project exists to demonstrate. Instead, this is a faithful replay of a real run of the lab — the alerts, timestamps and counts below come straight from detection/evidence/eve.json, nothing invented.',
+      why: 'Why isn’t this "live"?',
+      whyBody:
+        'Keeping the virtual PLC reachable publicly 24/7 would mean (a) exposing an unauthenticated industrial protocol to anyone on the internet, and (b) paying for infrastructure for a container that only makes sense inside an isolated network. This replay lets you see exactly what happened — real attack, real detection — without that risk.',
+      totals: `${replayTotals.totalAlerts} alerts · ${replayTotals.distinctSignatures} distinct techniques · window ${new Date(replayTotals.windowStart).toLocaleTimeString('en-US')} – ${new Date(replayTotals.windowEnd).toLocaleTimeString('en-US')}`,
+      evidence: 'Evidence (real Suricata alert)',
+      impact: 'Observed impact',
+      mitigation: 'Mitigation',
+      alerts: (n: number) => `${n} alert${n === 1 ? '' : 's'}`,
+    };
+---
+
+<article>
+  <header class="nb-border border-t-0 border-x-0 border-b-2 nb-texture px-6 md:px-12 py-16 md:py-20">
+    <a
+      href={`${base}/projects/laboratorio-ot-ics`}
+      class="inline-flex items-center gap-2 text-label mb-10 hover:underline underline-offset-4"
+    >
+      {copy.back}
+    </a>
+    <p class="text-label text-[var(--color-muted)] mb-4">{copy.kicker}</p>
+    <h1 class="font-bold uppercase leading-[0.9] tracking-[-0.03em] mb-8" style="font-size: clamp(2rem, 6vw, 4rem);">
+      {copy.title}
+    </h1>
+    <p class="text-lg md:text-xl leading-relaxed max-w-3xl mb-6">{copy.intro}</p>
+    <p class="text-label text-[var(--color-muted)]">{copy.totals}</p>
+  </header>
+
+  <section class="nb-border border-t-0 border-x-0 border-b-2 px-6 md:px-12 py-10 bg-[var(--color-white)]">
+    <h2 class="text-label text-[var(--color-muted)] mb-3">{copy.why}</h2>
+    <p class="text-base leading-relaxed max-w-3xl">{copy.whyBody}</p>
+  </section>
+
+  <section class="px-6 md:px-12 py-16 md:py-20 flex flex-col gap-10">
+    {replaySteps.map((step) => (
+      <div class="nb-border nb-shadow-sm bg-[var(--color-white)] p-6 md:p-8 flex flex-col gap-4">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="text-label px-3 py-1 nb-border bg-[var(--color-ink)] text-[var(--color-paper)]">
+            {String(step.phase).padStart(2, '0')}
+          </span>
+          <code class="text-sm">{step.script}</code>
+          <a
+            href={step.technique.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ml-auto text-label hover:underline underline-offset-4"
+          >
+            MITRE {step.technique.id} — {step.technique.name} ↗
+          </a>
+        </div>
+
+        <h3 class="text-2xl font-bold leading-tight">{step.title[lang]}</h3>
+        <p class="leading-relaxed max-w-3xl">{step.narrative[lang]}</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-6 mt-2">
+          <div class="nb-border bg-[var(--color-paper)] p-4">
+            <p class="text-label text-[var(--color-muted)] mb-2">{copy.evidence}</p>
+            <pre class="text-xs overflow-x-auto"><code>{JSON.stringify(step.example, null, 2)}</code></pre>
+            <p class="text-label text-[var(--color-muted)] mt-3">
+              SID {step.signatureId} · {step.category} · {copy.alerts(step.count)}
+            </p>
+          </div>
+          <div class="nb-border bg-[var(--color-paper)] p-4">
+            <p class="text-label text-[var(--color-muted)] mb-2">{copy.mitigation}</p>
+            <p class="text-sm leading-relaxed">{step.mitigation[lang]}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+
+    <div class="nb-border nb-shadow-sm bg-[var(--color-ink)] text-[var(--color-paper)] p-6 md:p-8">
+      <p class="text-label text-[var(--color-paper)]/70 mb-2">{copy.impact}</p>
+      <p class="leading-relaxed max-w-3xl">{replayImpact[lang]}</p>
+    </div>
+
+    <Button href={`${base}/projects/laboratorio-ot-ics`} variant="outline" size="md" class="self-start">
+      {copy.back}
+    </Button>
+  </section>
+</article>
