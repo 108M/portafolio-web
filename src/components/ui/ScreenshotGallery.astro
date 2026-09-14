@@ -7,14 +7,24 @@ interface Props {
 const { images, alt } = Astro.props;
 ---
 
-<div class="screenshot-gallery">
-  <div class="screenshot-gallery-track" role="list">
-    {images.map((src, i) => (
-      <button type="button" class="screenshot-gallery-thumb" data-index={i} aria-label={`${alt} ${i + 1}/${images.length}`}>
-        <img src={src} alt={`${alt} ${i + 1}`} loading="lazy" />
-      </button>
-    ))}
+<div class="screenshot-gallery" style={`--count:${images.length}`}>
+  <div class="screenshot-gallery-viewport">
+    <div class="screenshot-gallery-track" role="list">
+      {images.map((src, i) => (
+        <button type="button" class="screenshot-gallery-thumb" data-index={i} aria-label={`${alt} ${i + 1}/${images.length}`}>
+          <img src={src} alt={`${alt} ${i + 1}`} loading="lazy" />
+        </button>
+      ))}
+    </div>
   </div>
+
+  {images.length > 1 && (
+    <div class="screenshot-gallery-controls">
+      <button type="button" class="screenshot-gallery-arrow screenshot-gallery-prev" aria-label="Previous">←</button>
+      <p class="screenshot-gallery-counter"></p>
+      <button type="button" class="screenshot-gallery-arrow screenshot-gallery-next" aria-label="Next">→</button>
+    </div>
+  )}
 
   <div class="screenshot-lightbox" hidden>
     <button type="button" class="screenshot-lightbox-close" aria-label="Close">✕</button>
@@ -26,23 +36,30 @@ const { images, alt } = Astro.props;
 </div>
 
 <style>
+  .screenshot-gallery {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .screenshot-gallery-viewport {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
   .screenshot-gallery-track {
     display: flex;
     gap: 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
+    will-change: transform;
+    transition: transform 0.35s ease;
   }
 
   .screenshot-gallery-thumb {
-    flex: 0 0 auto;
-    width: min(80vw, 420px);
-    aspect-ratio: 16 / 10;
-    scroll-snap-align: start;
+    flex: 0 0 calc((100% - 2rem) / 3);
+    aspect-ratio: 4 / 3;
     cursor: zoom-in;
     padding: 0;
-    background: var(--color-white);
+    background: var(--color-paper);
     border: 2px solid var(--color-ink);
     box-shadow: 4px 4px 0 var(--color-ink);
     overflow: hidden;
@@ -51,8 +68,54 @@ const { images, alt } = Astro.props;
   .screenshot-gallery-thumb img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+  }
+
+  .screenshot-gallery-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .screenshot-gallery-arrow {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    background: var(--color-white);
+    border: 2px solid var(--color-ink);
+    box-shadow: 3px 3px 0 var(--color-ink);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .screenshot-gallery-arrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+    box-shadow: none;
+  }
+
+  .screenshot-gallery-counter {
+    text-align: center;
+    min-width: 4.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 900px) {
+    .screenshot-gallery-thumb {
+      flex-basis: calc((100% - 1rem) / 2);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .screenshot-gallery-thumb {
+      flex-basis: 100%;
+    }
   }
 
   .screenshot-lightbox {
@@ -118,7 +181,6 @@ const { images, alt } = Astro.props;
     left: 50%;
     transform: translateX(-50%);
     color: var(--color-paper);
-    font: var(--font-label, inherit);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     font-size: 0.75rem;
@@ -133,6 +195,13 @@ const { images, alt } = Astro.props;
 </style>
 
 <script>
+  function itemsPerView(): number {
+    const w = window.innerWidth;
+    if (w <= 560) return 1;
+    if (w <= 900) return 2;
+    return 3;
+  }
+
   function initGalleries() {
     document.querySelectorAll<HTMLElement>('.screenshot-gallery').forEach((gallery) => {
       if (gallery.dataset.wired === 'true') return;
@@ -141,21 +210,56 @@ const { images, alt } = Astro.props;
       const thumbs = Array.from(gallery.querySelectorAll<HTMLButtonElement>('.screenshot-gallery-thumb'));
       const sources = thumbs.map((t) => t.querySelector('img')!.src);
       const alts = thumbs.map((t) => t.querySelector('img')!.alt);
+      const total = sources.length;
 
+      const track = gallery.querySelector<HTMLElement>('.screenshot-gallery-track')!;
+      const prevArrow = gallery.querySelector<HTMLButtonElement>('.screenshot-gallery-prev');
+      const nextArrow = gallery.querySelector<HTMLButtonElement>('.screenshot-gallery-next');
+      const galleryCounter = gallery.querySelector<HTMLElement>('.screenshot-gallery-counter');
+
+      let page = 0;
+
+      function maxPage() {
+        return Math.max(0, total - itemsPerView());
+      }
+
+      function renderTrack() {
+        const perView = itemsPerView();
+        const itemWidth = 100 / perView;
+        page = Math.min(page, maxPage());
+        track.style.transform = `translateX(-${page * itemWidth}%)`;
+        if (prevArrow) prevArrow.disabled = page <= 0;
+        if (nextArrow) nextArrow.disabled = page >= maxPage();
+        if (galleryCounter) galleryCounter.textContent = `${page + 1} / ${maxPage() + 1}`;
+      }
+
+      prevArrow?.addEventListener('click', () => {
+        page = Math.max(0, page - 1);
+        renderTrack();
+      });
+      nextArrow?.addEventListener('click', () => {
+        page = Math.min(maxPage(), page + 1);
+        renderTrack();
+      });
+
+      window.addEventListener('resize', renderTrack);
+      renderTrack();
+
+      // Lightbox
       const lightbox = gallery.querySelector<HTMLElement>('.screenshot-lightbox')!;
       const img = lightbox.querySelector<HTMLImageElement>('.screenshot-lightbox-img')!;
       const counter = lightbox.querySelector<HTMLElement>('.screenshot-lightbox-counter')!;
       const closeBtn = lightbox.querySelector<HTMLButtonElement>('.screenshot-lightbox-close')!;
-      const prevBtn = lightbox.querySelector<HTMLButtonElement>('.screenshot-lightbox-prev')!;
-      const nextBtn = lightbox.querySelector<HTMLButtonElement>('.screenshot-lightbox-next')!;
+      const lbPrevBtn = lightbox.querySelector<HTMLButtonElement>('.screenshot-lightbox-prev')!;
+      const lbNextBtn = lightbox.querySelector<HTMLButtonElement>('.screenshot-lightbox-next')!;
 
       let current = 0;
 
       function show(index: number) {
-        current = (index + sources.length) % sources.length;
+        current = (index + total) % total;
         img.src = sources[current];
         img.alt = alts[current];
-        counter.textContent = `${current + 1} / ${sources.length}`;
+        counter.textContent = `${current + 1} / ${total}`;
       }
 
       function open(index: number) {
@@ -174,8 +278,8 @@ const { images, alt } = Astro.props;
       });
 
       closeBtn.addEventListener('click', close);
-      prevBtn.addEventListener('click', () => show(current - 1));
-      nextBtn.addEventListener('click', () => show(current + 1));
+      lbPrevBtn.addEventListener('click', () => show(current - 1));
+      lbNextBtn.addEventListener('click', () => show(current + 1));
 
       lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) close();
