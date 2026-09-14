@@ -36,6 +36,18 @@ export const projects: Project[] = [
     liveUrl: '/projects/laboratorio-ot-ics/replay',
     year: '2025',
     featured: true,
+    screenshots: [
+      '/screenshots/laboratorio-ot-ics/01-openplc-dashboard-inicial.png',
+      '/screenshots/laboratorio-ot-ics/02-openplc-programa-subido.png',
+      '/screenshots/laboratorio-ot-ics/03-openplc-compilacion.png',
+      '/screenshots/laboratorio-ot-ics/04-openplc-plc-running.png',
+      '/screenshots/laboratorio-ot-ics/05-hmi-normal.png',
+      '/screenshots/laboratorio-ot-ics/06-hmi-bomba-encendida.png',
+      '/screenshots/laboratorio-ot-ics/07-hmi-ataque-alarma.png',
+      '/screenshots/laboratorio-ot-ics/08-suricata-alertas.png',
+      '/screenshots/laboratorio-ot-ics/09-ataque-bloqueado.png',
+      '/screenshots/laboratorio-ot-ics/10-nft-conducto-bloqueado.png',
+    ],
   },
   {
     slug: 'pipeline-devsecops',
