@@ -2,6 +2,7 @@
 import SectionTitle from '@/components/ui/SectionTitle.astro';
 import Button from '@/components/ui/Button.astro';
 import { useTranslations } from '@/i18n/ui';
+import { cvHref, cvFileName } from '@/data/cv';
 import type { Lang } from '@/types';
 
 interface Props {
@@ -44,6 +45,15 @@ const email = 'alvarezalonsomarkel@gmail.com';
       class="w-full justify-center"
     >
       {t('contact.email')} ↗
+    </Button>
+    <Button
+      href={cvHref(lang)}
+      variant="outline"
+      size="lg"
+      download={cvFileName(lang)}
+      class="w-full justify-center"
+    >
+      {t('contact.cv')} ↓
     </Button>
     <Button
       href="https://github.com/108M"

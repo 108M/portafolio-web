@@ -14,12 +14,12 @@ export const internship = {
   division: 'iAItech',
   period: 'Feb – Sep 2026',
   role: {
-    en: 'AI Developer',
-    es: 'Desarrollador de IA',
+    en: 'AI Software Engineer',
+    es: 'AI Software Engineer',
   } as LocalizedString,
   roleProgression: {
-    en: 'Internship → Contractor',
-    es: 'Prácticas → Contrato',
+    en: 'AI Developer (Intern) → AI Software Engineer',
+    es: 'Desarrollador de IA (Prácticas) → AI Software Engineer',
   } as LocalizedString,
   summary: {
     en: "Curricular internship in iAR's applied-AI division (iAItech), later hired for two months. Shipped production AI features across the company's core products before starting the Cybersecurity Master's.",

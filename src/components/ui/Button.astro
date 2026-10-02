@@ -4,6 +4,7 @@ interface Props {
   variant?: 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   external?: boolean;
+  download?: boolean | string;
   class?: string;
   type?: 'button' | 'submit';
 }
@@ -13,6 +14,7 @@ const {
   variant = 'primary',
   size = 'md',
   external = false,
+  download,
   class: className = '',
   type = 'button',
 } = Astro.props;
@@ -40,7 +42,7 @@ const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' 
 ---
 
 {href ? (
-  <a href={href} class={classes} {...externalProps}>
+  <a href={href} class={classes} download={download} {...externalProps}>
     <slot />
   </a>
 ) : (

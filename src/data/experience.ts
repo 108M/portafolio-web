@@ -18,8 +18,8 @@ export const experience: Experience[] = [
   {
     type: 'work',
     title: {
-      en: 'AI Developer Intern',
-      es: 'Desarrollador de IA en Prácticas',
+      en: 'AI Developer (Intern)',
+      es: 'Desarrollador de IA (Prácticas)',
     },
     organization: 'Industrial Augmented Reality (iAR)',
     period: 'Feb – Jun 2026',
@@ -33,8 +33,8 @@ export const experience: Experience[] = [
   {
     type: 'work',
     title: {
-      en: 'AI Developer',
-      es: 'Desarrollador de IA',
+      en: 'AI Software Engineer',
+      es: 'AI Software Engineer',
     },
     organization: 'Industrial Augmented Reality (iAR)',
     period: 'Jun – Sep 2026',

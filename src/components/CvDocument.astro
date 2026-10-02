@@ -1,0 +1,175 @@
+---
+// Printable, ATS-friendly CV: single column, real text, standard headings,
+// no tables/icons/images. Rendered to PDF by scripts/build-cv.mjs.
+import { cv } from '@/data/cv';
+import { projects } from '@/data/projects';
+import type { Lang } from '@/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const c = cv.contact;
+
+const h = {
+  en: {
+    summary: 'Profile',
+    experience: 'Experience',
+    education: 'Education',
+    projects: 'Projects',
+    skills: 'Technical Skills',
+    languages: 'Languages',
+  },
+  es: {
+    summary: 'Perfil',
+    experience: 'Experiencia',
+    education: 'Formación',
+    projects: 'Proyectos',
+    skills: 'Habilidades técnicas',
+    languages: 'Idiomas',
+  },
+}[lang];
+
+const cvProjects = cv.projects
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter((p) => p !== undefined);
+
+const title = `${cv.name} — CV`;
+const description = `${cv.name} · ${cv.headline[lang]}`;
+const keywords = cv.skills.map((s) => s.items).join(', ');
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="author" content={cv.name} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="noindex, nofollow" />
+    <style is:global>
+      @page { size: A4; margin: 10mm 14mm; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { background: #fff; color: #111; }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 9.4pt;
+        line-height: 1.26;
+        max-width: 182mm;
+        margin: 0 auto;
+      }
+      @media screen { body { padding: 12mm 0; } }
+      a { color: inherit; text-decoration: none; }
+      header { text-align: center; margin-bottom: 7pt; }
+      h1 { font-size: 20pt; letter-spacing: 0.5pt; line-height: 1.1; }
+      .headline { font-size: 11pt; font-weight: bold; margin-top: 2pt; }
+      .contact { margin-top: 4pt; font-size: 9pt; }
+      h2 {
+        font-size: 10.5pt;
+        text-transform: uppercase;
+        letter-spacing: 0.8pt;
+        border-bottom: 1px solid #111;
+        padding-bottom: 1.5pt;
+        margin: 7pt 0 3pt;
+      }
+      .entry { margin-bottom: 4pt; break-inside: avoid; }
+      .row { display: flex; justify-content: space-between; gap: 8pt; }
+      .row .right { white-space: nowrap; }
+      .entry-title { font-weight: bold; }
+      .sub { font-style: italic; }
+      ul { margin: 2pt 0 0 13pt; }
+      li { margin-bottom: 1pt; }
+      .skills p, .langs p { margin-bottom: 1.5pt; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>{cv.name}</h1>
+      <p class="headline">{cv.headline[lang]}</p>
+      <p class="contact">
+        {c.location[lang]} | <a href={`tel:${c.phone.replace(/\s/g, '')}`}>{c.phone}</a> |
+        <a href={`mailto:${c.email}`}>{c.email}</a>
+      </p>
+      <p class="contact">
+        <a href={`https://${c.linkedin}`}>{c.linkedin}</a> |
+        <a href={`https://${c.github}`}>{c.github}</a> |
+        <a href={`https://${c.website}`}>{c.website}</a>
+      </p>
+    </header>
+
+    <section>
+      <h2>{h.summary}</h2>
+      <p>{cv.summary[lang]}</p>
+    </section>
+
+    <section>
+      <h2>{h.experience}</h2>
+      {cv.experience.map((r) => (
+        <div class="entry">
+          <div class="row">
+            <span class="entry-title">{r.title[lang]}</span>
+            <span class="right">{r.period[lang]}</span>
+          </div>
+          <div class="row">
+            <span class="sub">{r.organization}</span>
+            <span class="right sub">{r.location}</span>
+          </div>
+          <ul>
+            {r.bullets[lang].map((b) => <li>{b}</li>)}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>{h.education}</h2>
+      {cv.education.map((e) => (
+        <div class="entry">
+          <div class="row">
+            <span class="entry-title">{e.title[lang]}</span>
+            <span class="right">{e.period[lang]}</span>
+          </div>
+          <div class="row">
+            <span class="sub">{e.organization}</span>
+            <span class="right sub">{e.location}</span>
+          </div>
+          {e.detail && <p>{e.detail[lang]}</p>}
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>{h.projects}</h2>
+      {cvProjects.map((p) => (
+        <div class="entry">
+          <div class="row">
+            <span><span class="entry-title">{p.title}</span> | <span class="sub">{p.tags.join(', ')}</span></span>
+            <span class="right">{p.year}</span>
+          </div>
+          <ul>
+            {p.features[lang].slice(0, cv.projectBullets).map((f) => <li>{f}</li>)}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <section class="skills">
+      <h2>{h.skills}</h2>
+      {cv.skills.map((s) => (
+        <p><strong>{s.label[lang]}:</strong> {s.items}</p>
+      ))}
+    </section>
+
+    <section class="langs">
+      <h2>{h.languages}</h2>
+      <p>
+        {cv.languages.map((l, i) => (
+          <>{i > 0 && ' | '}<strong>{l.name[lang]}:</strong> {l.level[lang]}</>
+        ))}
+      </p>
+    </section>
+  </body>
+</html>

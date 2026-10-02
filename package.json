@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cv": "astro build && node scripts/build-cv.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
@@ -22,6 +23,7 @@
     "esbuild": true
   },
   "devDependencies": {
+    "pdf-lib": "^1.17.1",
     "playwright": "^1.63.0"
   }
 }

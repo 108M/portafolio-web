@@ -24,6 +24,7 @@ export const ui = {
     'hero.cta.work':  'See projects',
     'hero.cta.contact':'Contact',
     'hero.cta.github':'GitHub',
+    'hero.cta.cv':    'Download CV',
     'hero.badge.available': 'Open to opportunities',
     'hero.exp.value': '1+',
     'hero.exp.label': 'Year of\nwork experience',
@@ -81,6 +82,7 @@ export const ui = {
     'contact.email':   'Send an email',
     'contact.github':  'GitHub',
     'contact.linkedin':'LinkedIn',
+    'contact.cv':      'Download CV (PDF)',
 
     // Footer
     'footer.built':    'Built with Astro.',
@@ -102,6 +104,7 @@ export const ui = {
     'hero.cta.work':  'Ver proyectos',
     'hero.cta.contact':'Contacto',
     'hero.cta.github':'GitHub',
+    'hero.cta.cv':    'Descargar CV',
     'hero.badge.available': 'Abierto a oportunidades',
     'hero.exp.value': '1+',
     'hero.exp.label': 'Año de\nexperiencia laboral',
@@ -159,6 +162,7 @@ export const ui = {
     'contact.email':   'Enviar email',
     'contact.github':  'GitHub',
     'contact.linkedin':'LinkedIn',
+    'contact.cv':      'Descargar CV (PDF)',
 
     // Footer
     'footer.built':    'Construido con Astro.',
