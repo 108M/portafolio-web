@@ -1,0 +1,80 @@
+---
+// Link-in-bio page for events: the QR at /qr points here.
+import '@/styles/global.css';
+import { cv, cvHref, cvFileName } from '@/data/cv';
+
+const title = 'Markel Álvarez — Links';
+const description = 'GitHub, LinkedIn, CV y contacto de Markel Álvarez Alonso.';
+const site = Astro.site!;
+
+const links = [
+  { label: 'Portfolio', sub: cv.contact.website, href: '/', primary: true },
+  { label: 'LinkedIn', sub: 'Markel Álvarez Alonso', href: `https://www.${cv.contact.linkedin}/`, external: true },
+  { label: 'GitHub', sub: '@108M', href: `https://${cv.contact.github}`, external: true },
+  { label: 'CV · Español', sub: 'PDF', href: cvHref('es'), download: cvFileName('es') },
+  { label: 'CV · English', sub: 'PDF', href: cvHref('en'), download: cvFileName('en') },
+  { label: 'Email', sub: cv.contact.email, href: `mailto:${cv.contact.email}` },
+  { label: 'Guardar contacto', sub: 'Save contact · vCard', href: '/markel.vcf', download: 'Markel-Alvarez.vcf' },
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL('/links', site)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL('/links', site)} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL('/og-image.png', site)} />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="nb-texture min-h-svh">
+    <main class="mx-auto max-w-md px-4 py-10 flex flex-col gap-8">
+      <header class="nb-border nb-shadow-lg bg-[var(--color-ink)] text-[var(--color-paper)]">
+        <div class="px-5 py-6">
+          <h1 class="font-bold uppercase leading-[0.9] tracking-[-0.03em] text-4xl">
+            Markel<br />Álvarez Alonso
+          </h1>
+          <p class="mt-3 text-label opacity-80">{cv.headline.es}</p>
+        </div>
+        <div class="nb-border border-x-0 border-b-0 border-t-2 border-[var(--color-paper)] px-5 py-3 flex items-center justify-between text-label">
+          <span class="flex items-center gap-2">
+            <span class="inline-flex rounded-full h-2.5 w-2.5" style="background: var(--color-green);"></span>
+            Disponible
+          </span>
+          <span>Pamplona · ES</span>
+        </div>
+      </header>
+
+      <ul class="flex flex-col gap-4 list-none" role="list">
+        {links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              download={l.download}
+              {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              class:list={[
+                'nb-border nb-shadow nb-press flex items-center justify-between gap-4 px-5 py-4',
+                l.primary ? 'bg-[var(--color-ink)] text-[var(--color-paper)]' : 'bg-[var(--color-white)]',
+              ]}
+            >
+              <span class="min-w-0">
+                <span class="block font-bold text-lg leading-tight">{l.label}</span>
+                <span class:list={['block text-sm truncate', l.primary ? 'opacity-70' : 'text-[var(--color-muted)]']}>{l.sub}</span>
+              </span>
+              <span class="text-xl shrink-0" aria-hidden="true">{l.download ? '↓' : l.external ? '↗' : '→'}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <p class="text-label text-[var(--color-muted)] text-center">markel108.dev</p>
+    </main>
+  </body>
+</html>

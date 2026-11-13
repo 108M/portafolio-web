@@ -13,7 +13,7 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [sitemap({ filter: (page) => !/\/cv\/$/.test(page) })],
+  integrations: [sitemap({ filter: (page) => !/\/(cv|qr)\/$/.test(page) })],
   vite: {
     plugins: [tailwindcss()],
   },

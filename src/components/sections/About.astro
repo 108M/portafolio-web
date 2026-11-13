@@ -13,30 +13,16 @@ const t = useTranslations(lang);
 
 <section
   id="about"
-  class="nb-border border-t-0 border-x-0 border-b-2 grid grid-cols-1 lg:grid-cols-2"
+  class="nb-border border-t-0 border-x-0 border-b-2"
 >
-  <!-- Left: decorative block -->
-  <div class="nb-dots nb-border border-t-0 border-l-0 border-b-0 lg:border-r-2 p-8 md:p-12 flex items-center justify-center min-h-72 lg:min-h-0">
-    <div class="reveal nb-border nb-shadow-xl bg-[var(--color-ink)] w-full max-w-xs">
-      <div class="aspect-square flex items-center justify-center">
-        <span class="text-display text-[var(--color-paper)]" style="font-size: clamp(5rem, 14vw, 9rem);">MA</span>
-      </div>
-      <div class="nb-border border-x-0 border-b-0 border-t-2 border-[var(--color-paper)] px-5 py-4 flex items-center justify-between text-[var(--color-paper)]">
-        <span class="text-label">Pamplona</span>
-        <span class="text-label">Navarra · ES</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Right: text content -->
-  <div class="p-8 md:p-16 lg:p-24 flex flex-col justify-center">
+  <div class="max-w-5xl p-8 md:p-16 lg:p-24 flex flex-col justify-center">
     <SectionTitle title={t('about.title')} index="01" />
-    <p class="reveal text-lg leading-relaxed max-w-lg">
+    <p class="reveal text-lg leading-relaxed max-w-2xl">
       {t('about.body')}
     </p>
 
     <!-- Quick facts -->
-    <dl class="reveal mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <dl class="reveal mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div class="nb-border nb-shadow p-4">
         <dt class="text-label text-[var(--color-muted)] mb-1">
           {lang === 'en' ? 'Education' : 'Formación'}
