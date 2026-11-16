@@ -84,6 +84,12 @@ export const projects: Project[] = [
     language: 'Python',
     repoUrl: 'https://github.com/108M/Detection-as-Code',
     liveUrl: 'https://108m.github.io/Detection-as-Code/',
+    screenshots: [
+      '/screenshots/detection-as-code/01-informe-cobertura-attack.jpeg',
+      '/screenshots/detection-as-code/02-dac-test-ci.jpeg',
+      '/screenshots/detection-as-code/03-kibana-alertas.jpeg',
+      '/screenshots/detection-as-code/04-tabla-reglas.jpeg',
+    ],
     year: '2026',
     featured: true,
   },
