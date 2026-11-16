@@ -39,6 +39,8 @@ export const stack: TechItem[] = [
   // Security
   { name: 'DevSecOps',     category: 'security' },
   { name: 'Suricata',      category: 'security' },
+  { name: 'Sigma',         category: 'security' },
+  { name: 'Elastic SIEM',  category: 'security' },
   { name: 'MITRE ATT&CK',  category: 'security' },
   { name: 'IEC 62443',     category: 'security' },
   { name: 'Modbus',        category: 'security' },
